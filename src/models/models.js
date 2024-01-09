@@ -1,0 +1,22 @@
+const a = {
+    "iss": "https://app-backend-utn-2023.onrender.com",
+    "iat": 1703985157,
+    "nbf": 1703985157,
+    "exp": 1703988757,
+    "app_displayname": "app-backend-utn-2023",
+    "appid": "app_9e7db781-2c01-40b8-8eef-54007e8db3aa",
+    "family_name": "SALAZAR ANRANGO",
+    "given_name": "MARIO ANDRES",
+    "unique_name": "masalazara@utn.edu.ec",
+    "upn": "masalazara@utn.edu.ec",
+    "user_id": 8,
+    "user_code": "427db972-a04a-4f6b-8693-3b198ca37150",
+    "user_full_name": "MARIO ANDRES SALAZAR ANRANGO",
+    "user_first_name": "MARIO ANDRES",
+    "user_last_name": "SALAZAR ANRANGO",
+    "user_email": "masalazara@utn.edu.ec",
+    "user_password": "U2FsdGVkX19m++qArTTGhNhDXEvacytwtIDBCiqDxUb+UbgSj6R3aATwZ6yHBdhB",
+    "user_phone_number": "",
+    "user_state": true,
+    "user_date_register": "2023-12-30T22:37:14.899Z"
+}

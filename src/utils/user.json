@@ -1,0 +1,41 @@
+{
+    "aud": "00000003-0000-0000-c000-000000000000",
+    "iss": "https://sts.windows.net/8dbe1469-c79c-4e21-9d43-ca65d9e9c475/",
+    "iat": 1703977238,
+    "nbf": 1703977238,
+    "exp": 1703982075,
+    "acct": 0,
+    "acr": "1",
+    "aio": "AVQAq/8VAAAAnTdgYOrTusl4J27bc5u1WE0lypqRM1X15V38CcJ1qkOfMdBMibLIwGz6vjBMcX0Nmxs7fiNKkkAVmKYOgZ5H/kWbG9cTfVNFDSBKpKS9Ug4=",
+    "amr": [
+        "pwd",
+        "mfa"
+    ],
+    "app_displayname": "app-marioutn-software",
+    "appid": "1e9456ee-9309-47b2-b95a-1248801f5992",
+    "appidacr": "1",
+    "family_name": "SALAZAR ANRANGO",
+    "given_name": "MARIO ANDRES",
+    "idtyp": "user",
+    "ipaddr": "138.185.139.49",
+    "name": "SALAZAR ANRANGO MARIO ANDRES",
+    "oid": "427db972-a04a-4f6b-8693-3b198ca37150",
+    "platf": "3",
+    "puid": "1003BFFDA560B7FB",
+    "rh": "0.AQYAaRS-jZzHIU6dQ8pl2enEdQMAAAAAAAAAwAAAAAAAAAAGAP4.",
+    "scp": "Calendars.Read Mail.Read Mail.Send User.Read profile openid email",
+    "sub": "kvKDMVrp5Pahxoi7cr743JNHmjf_15bjBygpPUwSnnI",
+    "tenant_region_scope": "SA",
+    "tid": "8dbe1469-c79c-4e21-9d43-ca65d9e9c475",
+    "unique_name": "masalazara@utn.edu.ec",
+    "upn": "masalazara@utn.edu.ec",
+    "uti": "vptL4safl0C9rNk64CVJAw",
+    "ver": "1.0",
+    "wids": [
+        "b79fbf4d-3ef9-4689-8143-76b194e85509"
+    ],
+    "xms_st": {
+        "sub": "e9_Uw3hF3HIEABY3gw6X52ME2MXc-ztyzfm7C_7K_Dk"
+    },
+    "xms_tcdt": 1360016031
+}
