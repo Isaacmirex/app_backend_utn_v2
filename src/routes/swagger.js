@@ -41,18 +41,18 @@ const swaggerDocs  = (app, puerto) => {
         }
     `;
 
-    app.use('/utnbackend/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
+    app.use('/utnbackend/v2/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
         explorer: true,
         customCss,
     }));
 
     // Ruta para obtener el archivo JSON de la especificación Swagger
-    app.get('/utnbackend/v1/docs.json', (req, res) => {
+    app.get('/utnbackend/v2/docs.json', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.send(swaggerSpecs);
     });
 
-    console.log(`La documentación Swagger está disponible en http://localhost:${puerto}/utnbackend/v1/docs`);
+    console.log(`La documentación Swagger está disponible en http://localhost:${puerto}/utnbackend/v2/docs`);
 };
 
 export { swaggerDocs  };
