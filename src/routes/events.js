@@ -7,7 +7,7 @@ const eventsRouter = Router();
 //Routes events
 /**
  * @openapi
- * /utnbackend/v1/events:
+ * /utnbackend/v2/events:
  *   get:
  *     tags:
  *       - Events
@@ -30,7 +30,7 @@ const eventsRouter = Router();
 eventsRouter.get('/',verifyToken,getEvents);
 /**
  * @openapi
- * /utnbackend/v1/events/{id}:
+ * /utnbackend/v2/events/{id}:
  *   get:
  *     tags:
  *       - Events
@@ -61,7 +61,7 @@ eventsRouter.get('/',verifyToken,getEvents);
 eventsRouter.get('/:id',verifyToken,getEventsById);
 /**
  * @openapi
- * /utnbackend/v1/events:
+ * /utnbackend/v2/events:
  *   post:
  *     tags:
  *       - Events
@@ -132,7 +132,7 @@ eventsRouter.get('/:id',verifyToken,getEventsById);
 eventsRouter.post('/',verifyToken,createEvent);
 /**
  * @openapi
- * /utnbackend/v1/events:
+ * /utnbackend/v2/events:
  *   put:
  *     tags:
  *       - Events

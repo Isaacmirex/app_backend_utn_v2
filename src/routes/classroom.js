@@ -6,7 +6,7 @@ const classroomRouter = Router();
 //Routes Classrooms
 /**
  * @openapi
- * /utnbackend/v1/classroom:
+ * /utnbackend/v2/classroom:
  *   get:
  *     tags:
  *       - Classroom
@@ -29,7 +29,7 @@ const classroomRouter = Router();
 classroomRouter.get('/',verifyToken, getClassroom);
 /**
  * @openapi
- * /utnbackend/v1/classroom/{id}:
+ * /utnbackend/v2/classroom/{id}:
  *   get:
  *     tags:
  *       - Classroom
@@ -60,7 +60,7 @@ classroomRouter.get('/',verifyToken, getClassroom);
 classroomRouter.get('/:id',verifyToken, getClassroomById);
 /**
  * @openapi
- * /utnbackend/v1/classroom:
+ * /utnbackend/v2/classroom:
  *   post:
  *     tags:
  *       - Classroom
@@ -126,7 +126,7 @@ classroomRouter.get('/:id',verifyToken, getClassroomById);
 classroomRouter.post('/',verifyToken, verifyToken, creatClassroom);
 /**
  * @openapi
- * /utnbackend/v1/classroom:
+ * /utnbackend/v2/classroom:
  *   put:
  *     tags:
  *       - Classroom

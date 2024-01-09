@@ -49,30 +49,30 @@ app.get("/", (req, res) => {
 //swagger
 V1SwaggerDocs(app, port);
 
-app.use("/utnbackend/v1/mario", getmRouter);
-app.use("/utnbackend/v1/login", router);
+app.use("/utnbackend/v2/mario", getmRouter);
+app.use("/utnbackend/v2/login", router);
 app.use(
-  "/utnbackend/v1/users",
+  "/utnbackend/v2/users",
   authorize(["Administrador"], ["Usuarios"]),
   usersRouter
 );
 app.use(
-  "/utnbackend/v1/roles",
+  "/utnbackend/v2/roles",
   authorize(["Administrador"], ["Roles"]),
   rolesRouter
 );
 app.use(
-  "/utnbackend/v1/modules",
+  "/utnbackend/v2/modules",
   authorize(["Administrador"], ["Modulos"]),
   modulesRouter
 );
 app.use(
-  "/utnbackend/v1/assignments_modules",
+  "/utnbackend/v2/assignments_modules",
   authorize(["Administrador"], ["Asignacion de Modulos"]),
   assignments_modulesRouter
 );
 app.use(
-  "/utnbackend/v1/events",
+  "/utnbackend/v2/events",
   authorize(
     ["Administrador", "Estudiante", "Profesor", "Secretaria"],
     ["Eventos"]
@@ -80,7 +80,7 @@ app.use(
   eventsRouter
 );
 app.use(
-  "/utnbackend/v1/assignments_events",
+  "/utnbackend/v2/assignments_events",
   authorize(
     ["Administrador", "Estudiante", "Profesor"],
     ["Asignacion de Eventos"]
@@ -88,12 +88,12 @@ app.use(
   assignments_eventsRouter
 );
 app.use(
-  "/utnbackend/v1/classroom",
+  "/utnbackend/v2/classroom",
   authorize(["Administrador", "Estudiante", "Profesor"], ["Clases"]),
   classroomRouter
 );
 app.use(
-  "/utnbackend/v1/assignments_class",
+  "/utnbackend/v2/assignments_class",
   authorize(
     ["Administrador", "Estudiante", "Profesor"],
     ["Asignacion de Clases"]
@@ -101,7 +101,7 @@ app.use(
   assignments_classRouter
 );
 app.use(
-  "/utnbackend/v1/class_score",
+  "/utnbackend/v2/class_score",
   authorize(
     ["Administrador", "Estudiante", "Profesor", "Secretaria"],
     ["Notas"]
@@ -109,7 +109,7 @@ app.use(
   class_scoreRouter
 );
 app.use(
-  "/utnbackend/v1/auditing",
+  "/utnbackend/v2/auditing",
   authorize(["Administrador"], ["Auditoria"]),
   auditingRouter
 );

@@ -8,7 +8,7 @@ const assignments_modulesRouter = Router();
 // Routes Assignments Modules:
 /**
  * @openapi
- * /utnbackend/v1/assignments_modules:
+ * /utnbackend/v2/assignments_modules:
  *   get:
  *     tags:
  *       - Assignments Modules
@@ -31,7 +31,7 @@ const assignments_modulesRouter = Router();
 assignments_modulesRouter.get('/',verifyToken, getAssignmentsModules);
 /**
  * @openapi
- * /utnbackend/v1/assignments_modules/{id}:
+ * /utnbackend/v2/assignments_modules/{id}:
  *   get:
  *     tags:
  *       - Assignments Modules
@@ -61,7 +61,7 @@ assignments_modulesRouter.get('/',verifyToken, getAssignmentsModules);
 assignments_modulesRouter.get('/:id',verifyToken, getAssignmentsModulesByID);
 /**
  * @openapi
- * /utnbackend/v1/assignments_modules/users/{id}:
+ * /utnbackend/v2/assignments_modules/users/{id}:
  *   get:
  *     tags:
  *       - Assignments Modules
@@ -91,7 +91,7 @@ assignments_modulesRouter.get('/:id',verifyToken, getAssignmentsModulesByID);
 assignments_modulesRouter.get('/users/:id',verifyToken, getAssignmentsModulesByUserID);
 /**
  * @openapi
- * /utnbackend/v1/assignments_modules:
+ * /utnbackend/v2/assignments_modules:
  *   post:
  *     tags:
  *       - Assignments Modules
@@ -146,7 +146,7 @@ assignments_modulesRouter.post('/',verifyToken, createAssignmentsModules);
 /*assignments_modulesRouter.put('/:id', updateModule_Sate);*/
 /**
  * @openapi
- * /utnbackend/v1/assignments_modules/{id}:
+ * /utnbackend/v2/assignments_modules/{id}:
  *   delete:
  *     tags:
  *       - Assignments Modules

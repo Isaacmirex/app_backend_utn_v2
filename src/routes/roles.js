@@ -8,7 +8,7 @@ const rolesRouter = Router();
 // Routes Roles:
 /**
  * @openapi
- * /utnbackend/v1/roles:
+ * /utnbackend/v2/roles:
  *   get:
  *     tags:
  *       - Roles
@@ -31,7 +31,7 @@ const rolesRouter = Router();
 rolesRouter.get('/',verifyToken, getRoles);
 /**
  * @openapi
- * /utnbackend/v1/roles/{id}:
+ * /utnbackend/v2/roles/{id}:
  *   get:
  *     tags:
  *       - Roles
@@ -61,7 +61,7 @@ rolesRouter.get('/',verifyToken, getRoles);
 rolesRouter.get('/:id',verifyToken, getRolesByID);
 /**
  * @openapi
- * /utnbackend/v1/roles:
+ * /utnbackend/v2/roles:
  *   post:
  *     tags:
  *       - Roles
@@ -108,7 +108,7 @@ rolesRouter.get('/:id',verifyToken, getRolesByID);
 rolesRouter.post('/',verifyToken, createRol);
 /**
  * @openapi
- * /utnbackend/v1/roles/{id}:
+ * /utnbackend/v2/roles/{id}:
  *   put:
  *     tags:
  *       - Roles

@@ -8,7 +8,7 @@ const class_scoreRouter = Router();
 //Routes class_score
 /**
  * @openapi
- * /utnbackend/v1/class_score:
+ * /utnbackend/v2/class_score:
  *   get:
  *     tags:
  *       - Class Score
@@ -31,7 +31,7 @@ const class_scoreRouter = Router();
 class_scoreRouter.get('/',verifyToken, getClassScore);
 /**
  * @openapi
- * /utnbackend/v1/class_score/{id}:
+ * /utnbackend/v2/class_score/{id}:
  *   get:
  *     tags:
  *       - Class Score
@@ -62,7 +62,7 @@ class_scoreRouter.get('/',verifyToken, getClassScore);
 class_scoreRouter.get('/:id',verifyToken, getClassScoreById);
 /**
  * @openapi
- * /utnbackend/v1/class_score:
+ * /utnbackend/v2/class_score:
  *   post:
  *     tags:
  *       - Class Score
@@ -155,7 +155,7 @@ class_scoreRouter.get('/:id',verifyToken, getClassScoreById);
 class_scoreRouter.post('/',verifyToken, createClassScore);
 /**
  * @openapi
- * /utnbackend/v1/class_score:
+ * /utnbackend/v2/class_score:
  *   put:
  *     tags:
  *       - Class Score

@@ -8,7 +8,7 @@ const modulesRouter = Router();
 //Routes Modules:
 /**
  * @openapi
- * /utnbackend/v1/modules:
+ * /utnbackend/v2/modules:
  *   get:
  *     tags:
  *       - Modules
@@ -31,7 +31,7 @@ const modulesRouter = Router();
 modulesRouter.get('/',verifyToken, getModules);
 /**
  * @openapi
- * /utnbackend/v1/modules/{id}:
+ * /utnbackend/v2/modules/{id}:
  *   get:
  *     tags:
  *       - Modules
@@ -62,7 +62,7 @@ modulesRouter.get('/',verifyToken, getModules);
 modulesRouter.get('/:id',verifyToken, getModulesByID);
 /**
  * @openapi
- * /utnbackend/v1/modules:
+ * /utnbackend/v2/modules:
  *   post:
  *     tags:
  *       - Modules
@@ -109,7 +109,7 @@ modulesRouter.get('/:id',verifyToken, getModulesByID);
 modulesRouter.post('/',verifyToken, createModule);
 /**
  * @openapi
- * /utnbackend/v1/modules/{id}:
+ * /utnbackend/v2/modules/{id}:
  *   put:
  *     tags:
  *       - Modules

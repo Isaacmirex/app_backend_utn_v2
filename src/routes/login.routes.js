@@ -7,7 +7,7 @@ import { Login, setPassword } from "../controllers/login.controllers.js";
 // Routes Login
 /**
  * @openapi
- * /utnbackend/v1/login:
+ * /utnbackend/v2/login:
  *   post:
  *     tags:
  *       - Login
@@ -55,7 +55,7 @@ router.post("/", Login);
 
 /**
  * @openapi
- * /utnbackend/v1/login/{user_id}:
+ * /utnbackend/v2/login/{user_id}:
  *   put:
  *     tags:
  *       - Login

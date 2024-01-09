@@ -4,7 +4,7 @@ import { verifyToken } from '../middlewares/auth.jwt.js';
 const auditingRouter = Router();
 /**
  * @openapi
- * /utnbackend/v1/auditing:
+ * /utnbackend/v2/auditing:
  *   get:
  *     tags:
  *       - Auditing
@@ -27,7 +27,7 @@ const auditingRouter = Router();
 auditingRouter.get('/',verifyToken, getAuditing);
 /**
  * @openapi
- * /utnbackend/v1/auditing/{id}:
+ * /utnbackend/v2/auditing/{id}:
  *   get:
  *     tags:
  *       - Auditing

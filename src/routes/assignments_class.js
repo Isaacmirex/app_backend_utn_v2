@@ -7,7 +7,7 @@ const assignments_classRouter = Router();
 //Routes AssignmentsClass
 /**
  * @openapi
- * /utnbackend/v1/assignments_class:
+ * /utnbackend/v2/assignments_class:
  *   get:
  *     tags:
  *       - Assignments Class
@@ -30,7 +30,7 @@ const assignments_classRouter = Router();
 assignments_classRouter.get('/',verifyToken,getAssignmentsClass);
 /**
  * @openapi
- * /utnbackend/v1/assignments_class/{id}:
+ * /utnbackend/v2/assignments_class/{id}:
  *   get:
  *     tags:
  *       - Assignments Class
@@ -61,7 +61,7 @@ assignments_classRouter.get('/',verifyToken,getAssignmentsClass);
 assignments_classRouter.get('/:id',verifyToken, getAssignmentsClassById);
 /**
  * @openapi
- * /utnbackend/v1/assignments_class:
+ * /utnbackend/v2/assignments_class:
  *   post:
  *     tags:
  *       - Assignments Class
@@ -119,7 +119,7 @@ assignments_classRouter.get('/:id',verifyToken, getAssignmentsClassById);
 assignments_classRouter.post('/', verifyToken, createAssignmentsClass);
 /**
  * @openapi
- * /utnbackend/v1/assignments_class:
+ * /utnbackend/v2/assignments_class:
  *   put:
  *     tags:
  *       - Assignments Class

@@ -6,7 +6,7 @@ const usersRouter = Router();
 //Routes Users:
 /**
  * @openapi
- * /utnbackend/v1/users:
+ * /utnbackend/v2/users:
  *   get:
  *     tags:
  *       - Users
@@ -29,7 +29,7 @@ const usersRouter = Router();
 usersRouter.get('/',verifyToken, getUsers);
 /**
  * @openapi
- * /utnbackend/v1/users/{id}:
+ * /utnbackend/v2/users/{id}:
  *   get:
  *     tags:
  *       - Users
@@ -60,7 +60,7 @@ usersRouter.get('/',verifyToken, getUsers);
 usersRouter.get('/:id',verifyToken, getUsersByID);
 /**
  * @openapi
- * /utnbackend/v1/users:
+ * /utnbackend/v2/users:
  *   post:
  *     tags:
  *       - Users
@@ -127,7 +127,7 @@ usersRouter.get('/:id',verifyToken, getUsersByID);
 usersRouter.post('/',verifyToken, createUser);
 /**
  * @openapi
- * /utnbackend/v1/users/{id}:
+ * /utnbackend/v2/users/{id}:
  *   put:
  *     tags:
  *       - Users

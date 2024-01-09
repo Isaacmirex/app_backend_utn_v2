@@ -6,7 +6,7 @@ const assignments_eventsRouter = Router();
 //Routes assigment_events
 /**
  * @openapi
- * /utnbackend/v1/assignments_events:
+ * /utnbackend/v2/assignments_events:
  *   get:
  *     tags:
  *       - Assignments Events
@@ -30,7 +30,7 @@ assignments_eventsRouter.get('/',verifyToken,getAssigmentEvents);
 
 /**
  * @openapi
- * /utnbackend/v1/assignments_events/{id}:
+ * /utnbackend/v2/assignments_events/{id}:
  *   get:
  *     tags:
  *       - Assignments Events
@@ -78,7 +78,7 @@ assignments_eventsRouter.get('/:id',verifyToken,getAssigmentEventsById);
 
 /**
  * @openapi
- * /utnbackend/v1/assignments_events:
+ * /utnbackend/v2/assignments_events:
  *   post:
  *     tags:
  *       - Assignments Events
@@ -133,7 +133,7 @@ assignments_eventsRouter.get('/:id',verifyToken,getAssigmentEventsById);
 assignments_eventsRouter.post('/',verifyToken, createAssigmentEvent);
 /**
  * @openapi
- * /utnbackend/v1/assignments_events:
+ * /utnbackend/v2/assignments_events:
  *   put:
  *     tags:
  *       - Assignments Events
@@ -199,7 +199,7 @@ assignments_eventsRouter.put('/',verifyToken,updateAssigmentEvent);
 
 /**
  * @openapi
- * /utnbackend/v1/assignments_events/{id}:
+ * /utnbackend/v2/assignments_events/{id}:
  *   delete:
  *     tags:
  *       - Assignments Events

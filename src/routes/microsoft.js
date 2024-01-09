@@ -38,11 +38,11 @@ loginRouter.get(
       );
       const user_token = jwt.sign(
         {
-          iss: "https://app-backend-utn-2023.onrender.com",
+          iss: "https://app-backend-utn-2024.onrender.com",
           iat: Math.floor(Date.now() / 1000),
           nbf: Math.floor(Date.now() / 1000),
           exp: Math.floor(Date.now() / 1000) + 3600,
-          app_displayname: "app-backend-utn-2023",
+          app_displayname: "app-backend-utn-2024",
           appid: "app_9e7db781-2c01-40b8-8eef-54007e8db3aa",
           family_name: data.rows[0].user_last_name,
           given_name: data.rows[0].user_first_name,
