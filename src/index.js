@@ -53,64 +53,64 @@ app.use("/utnbackend/v2/mario", getmRouter);
 app.use("/utnbackend/v2/login", router);
 app.use(
   "/utnbackend/v2/users",
-  authorize(["Administrador"], ["Usuarios"]),
+ // authorize(["Administrador"], ["Usuarios"]),
   usersRouter
 );
 app.use(
   "/utnbackend/v2/roles",
-  authorize(["Administrador"], ["Roles"]),
+  //authorize(["Administrador"], ["Roles"]),
   rolesRouter
 );
 app.use(
   "/utnbackend/v2/modules",
-  authorize(["Administrador"], ["Modulos"]),
+  //authorize(["Administrador"], ["Modulos"]),
   modulesRouter
 );
 app.use(
   "/utnbackend/v2/assignments_modules",
-  authorize(["Administrador"], ["Asignacion de Modulos"]),
+  // authorize(["Administrador"], ["Asignacion de Modulos"]),
   assignments_modulesRouter
 );
 app.use(
   "/utnbackend/v2/events",
-  authorize(
-    ["Administrador", "Estudiante", "Profesor", "Secretaria"],
-    ["Eventos"]
-  ),
+  //authorize(
+  //  ["Administrador", "Estudiante", "Profesor", "Secretaria"],
+  //  ["Eventos"]
+  //),
   eventsRouter
 );
 app.use(
   "/utnbackend/v2/assignments_events",
-  authorize(
-    ["Administrador", "Estudiante", "Profesor"],
-    ["Asignacion de Eventos"]
-  ),
+  // authorize(
+  //   ["Administrador", "Estudiante", "Profesor"],
+  //   ["Asignacion de Eventos"]
+  // ),
   assignments_eventsRouter
 );
 app.use(
   "/utnbackend/v2/classroom",
-  authorize(["Administrador", "Estudiante", "Profesor"], ["Clases"]),
+  // authorize(["Administrador", "Estudiante", "Profesor"], ["Clases"]),
   classroomRouter
 );
 app.use(
   "/utnbackend/v2/assignments_class",
-  authorize(
-    ["Administrador", "Estudiante", "Profesor"],
-    ["Asignacion de Clases"]
-  ),
+  // authorize(
+  //   ["Administrador", "Estudiante", "Profesor"],
+  //   ["Asignacion de Clases"]
+  // ),
   assignments_classRouter
 );
 app.use(
   "/utnbackend/v2/class_score",
-  authorize(
-    ["Administrador", "Estudiante", "Profesor", "Secretaria"],
-    ["Notas"]
-  ),
+  // authorize(
+  //   ["Administrador", "Estudiante", "Profesor", "Secretaria"],
+  //   ["Notas"]
+  // ),
   class_scoreRouter
 );
 app.use(
   "/utnbackend/v2/auditing",
-  authorize(["Administrador"], ["Auditoria"]),
+  // authorize(["Administrador"], ["Auditoria"]),
   auditingRouter
 );
 //app.use('/utnbackend/v1/assignments_modules', authorize(['Administrador'], ['Assignments_Modules']), assignments_modulesRouter);
