@@ -38,7 +38,7 @@ loginRouter.get(
       );
       const user_token = jwt.sign(
         {
-          iss: "https://app-backend-utn-2023.onrender.com",
+          iss: "https://app-backend-utn-v2-2024.onrender.com",
           iat: Math.floor(Date.now() / 1000),
           nbf: Math.floor(Date.now() / 1000),
           exp: Math.floor(Date.now() / 1000) + 3600,
