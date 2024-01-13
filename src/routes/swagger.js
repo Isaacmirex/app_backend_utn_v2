@@ -26,14 +26,14 @@ const opcionesSwagger = {
     // Lista de archivos que contienen las rutas de la API
     apis: ['src/routes/users.js', 'src/routes/modules.js', 'src/routes/roles.js', 'src/routes/assignments_modules.js',
         'src/routes/events.js', 'src/routes/assignments_events.js', 'src/routes/classroom.js',
-        'src/routes/assignments_class.js', 'src/routes/class_score.js', 'src/routes/auditing.js', 'src/routes/login.routes.js', 'src/routes/getmodules.routes.js', 'database.js'],
+        'src/routes/assignments_class.js', 'src/routes/class_score.js', 'src/routes/auditing.js', 'src/routes/login.routes.js', 'src/routes/getmodules.routes.js', 'src/routes/getmodules.routesmovil.js', 'database.js'],
 };
 
 // Generar la especificación de Swagger
 const swaggerSpecs = swaggerJSDoc(opcionesSwagger);
 
 // Configurar y exponer la documentación Swagger
-const swaggerDocs  = (app, puerto) => {
+const swaggerDocs = (app, puerto) => {
     // Habilitar el botón "Authorize"
     const customCss = `
         .authorize .btn {
@@ -52,7 +52,7 @@ const swaggerDocs  = (app, puerto) => {
         res.send(swaggerSpecs);
     });
 
-    console.log(`La documentación Swagger está disponible en http://localhost:${puerto}/utnbackend/v3/docs`);
+    console.log(`La documentación Swagger está disponible en http://localhost:${puerto}/utnbackend/v2/docs`);
 };
 
-export { swaggerDocs  };
+export {swaggerDocs};

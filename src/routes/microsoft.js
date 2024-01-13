@@ -1,8 +1,8 @@
-import { Router } from "express";
+import {Router} from "express";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
-import { client } from "../database/database.js";
+import {client} from "../database/database.js";
 
 const loginRouter = Router();
 
@@ -14,12 +14,12 @@ loginRouter.get("/microsoft", (req, res, next) => {
   req.session.origin = origin;
   passport.authenticate(
     "auth-microsoft",
-    { prompt: "select_account", session: false },
+    {prompt: "select_account", session: false},
     (err, user, info) => {
       if (err || !user) {
-        return res.status(401).json({ message: "Authentication failed" });
+        return res.status(401).json({message: "Authentication failed"});
       }
-      res.json({ token });
+      res.json({token});
     }
   )(req, res, next);
 });
@@ -38,11 +38,11 @@ loginRouter.get(
       );
       const user_token = jwt.sign(
         {
-          iss: "https://app-backend-utn-2024.onrender.com",
+          iss: "https://app-backend-utn-2023.onrender.com",
           iat: Math.floor(Date.now() / 1000),
           nbf: Math.floor(Date.now() / 1000),
           exp: Math.floor(Date.now() / 1000) + 3600,
-          app_displayname: "app-backend-utn-2024",
+          app_displayname: "app-backend-utn-2023",
           appid: "app_9e7db781-2c01-40b8-8eef-54007e8db3aa",
           family_name: data.rows[0].user_last_name,
           given_name: data.rows[0].user_first_name,
@@ -60,14 +60,20 @@ loginRouter.get(
           user_state: data.rows[0].user_state,
           user_date_register: data.rows[0].user_date_register,
         },
-        "secret"
+        "secretkey"
       );
-      const token = req.user.refreshToken.access_token;
-      const userString = JSON.stringify({
-        token: token,
-        user: user_token,
-      });
-      res.send(`
+      if (data.rows[0].user_state) {
+        const user = jwt.verify(user_token, "secretkey");
+        const token = req.user.refreshToken.access_token;
+        const userString = JSON.stringify({
+          auth: data.rows[0].user_state,
+          error: null,
+          user: user,
+          message: "Login Successfull!",
+          token: user_token,
+          token_microsoft: token,
+        });
+        res.status(200).send(`
         <!DOCTYPE html>
     <html lang="en">
       <body>
@@ -77,10 +83,30 @@ loginRouter.get(
       </script>
     </html>
         `);
+      } else {
+        const userString = JSON.stringify({
+          auth: false,
+          error: null,
+          user: null,
+          message: "User Inactive!",
+          token: null,
+          token_microsoft: null,
+        })
+        res.status(200).send(`
+        <!DOCTYPE html>
+    <html lang="en">
+      <body>
+      </body>
+      <script>
+        window.opener.postMessage(${userString}, '${origin_domain}')
+      </script>
+    </html>
+        `);
+      }
     } catch (error) {
-      res.json({ error: error.message });
+      res.json({error: error.message});
     }
   }
 );
 
-export { loginRouter };
+export {loginRouter};

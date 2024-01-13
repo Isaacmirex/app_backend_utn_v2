@@ -1,8 +1,8 @@
 import passport from "passport";
-import { Strategy as MicrosoftStrategy } from "passport-microsoft";
-import { config } from "dotenv";
-import { client } from "../database/database.js";
-import { getUserDesByID } from "../controllers/usersController.js";
+import {Strategy as MicrosoftStrategy} from "passport-microsoft";
+import {config} from "dotenv";
+import {client} from "../database/database.js";
+import {getUserDesByID} from "../controllers/usersController.js";
 
 config();
 
@@ -40,7 +40,7 @@ passport.deserializeUser(async function (id, done) {
     const modules = assignmentsQueryResult.rows.map((row) => row.module_name);
     console.log("modulos:", modules);
     // Pasar roles y módulos al completar la deserialización
-    done(null, { user, roles, modules });
+    done(null, {user, roles, modules});
   } catch (error) {
     done(error, null);
   }
@@ -53,7 +53,7 @@ passport.use(
       clientID: process.env.MICROSOFT_CLIENT_ID,
       clientSecret: process.env.MICROSOFT_CLIENT_SECRET,
       callbackURL:
-        "https://app-backend-utn-v2-2024.onrender.com/auth/microsoft/callback",
+        "https://app-backend-utn-2023.onrender.com/auth/microsoft/callback",
       scope: ["user.read", "calendars.read", "mail.read", "offline_access"],
       authorizationURL:
         "https://login.microsoftonline.com/8dbe1469-c79c-4e21-9d43-ca65d9e9c475/oauth2/v2.0/authorize",
@@ -61,9 +61,9 @@ passport.use(
         "https://login.microsoftonline.com/8dbe1469-c79c-4e21-9d43-ca65d9e9c475/oauth2/v2.0/token",
     },
     async function (req, accessToken, refreshToken, profile, done) {
-      console.log(req);
+      //console.log(req);
       try {
-        done(null, { profile, accessToken, refreshToken });
+        //done(null, {profile, accessToken, refreshToken});
         const userQueryResult = await client.query(
           "SELECT * FROM users WHERE user_code = $1",
           [profile.id]
@@ -121,7 +121,7 @@ passport.use(
             }*/
 
         // Llamar a la función done para indicar que la autenticación fue exitosa
-        // done(null, profile);
+        done(null, {profile, accessToken, refreshToken, userFromDB});
       } catch (error) {
         console.error("Error al autenticar al usuario", error);
         done(error, null);

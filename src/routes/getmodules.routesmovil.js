@@ -1,12 +1,12 @@
 import {Router} from 'express';
-import {getAssignmentsModules} from '../controllers/getmodules.js';
+import {getAssignmentsModulesMovil} from '../controllers/getmodules.js';
 import {verifyToken} from '../middlewares/auth.jwt.js';
 
-const getmRouter = Router();
+const getmRouterMovil = Router();
 
 /**
  * @openapi
- * /utnbackend/v2/getModules/{id}:
+ * /utnbackend/v2/getModulesMovil/{id}:
  *   get:
  *     tags:
  *       - Get Modules
@@ -33,6 +33,6 @@ const getmRouter = Router();
  *                   items: 
  *                     type: object
  */
-getmRouter.get('/:id', verifyToken, getAssignmentsModules);
+getmRouterMovil.get('/:id', verifyToken, getAssignmentsModulesMovil);
 
-export {getmRouter};
+export {getmRouterMovil};

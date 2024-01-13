@@ -2,27 +2,28 @@ import express from "express";
 import session from "express-session";
 import cors from "cors";
 import passport from "passport";
-import { loginRouter } from "./routes/microsoft.js";
-import { usersRouter } from "./routes/users.js";
-import { rolesRouter } from "./routes/roles.js";
-import { modulesRouter } from "./routes/modules.js";
-import { assignments_modulesRouter } from "./routes/assignments_modules.js";
-import { eventsRouter } from "./routes/events.js";
-import { assignments_eventsRouter } from "./routes/assignments_events.js";
-import { classroomRouter } from "./routes/classroom.js";
-import { assignments_classRouter } from "./routes/assignments_class.js";
-import { class_scoreRouter } from "./routes/class_score.js";
-import { auditingRouter } from "./routes/auditing.js";
+import {loginRouter} from "./routes/microsoft.js";
+import {usersRouter} from "./routes/users.js";
+import {rolesRouter} from "./routes/roles.js";
+import {modulesRouter} from "./routes/modules.js";
+import {assignments_modulesRouter} from "./routes/assignments_modules.js";
+import {eventsRouter} from "./routes/events.js";
+import {assignments_eventsRouter} from "./routes/assignments_events.js";
+import {classroomRouter} from "./routes/classroom.js";
+import {assignments_classRouter} from "./routes/assignments_class.js";
+import {class_scoreRouter} from "./routes/class_score.js";
+import {auditingRouter} from "./routes/auditing.js";
 import "./middlewares/microsoft.js";
-import { authorize } from "./middlewares/verifyAccess.js";
-import { swaggerDocs as V1SwaggerDocs } from "./routes/swagger.js";
-import { router } from "./routes/login.routes.js";
-import { getmRouter } from "./routes/getmodules.routes.js";
+import {authorize} from "./middlewares/verifyAccess.js";
+import {swaggerDocs as V1SwaggerDocs} from "./routes/swagger.js";
+import {router} from "./routes/login.routes.js";
+import {getmRouter} from "./routes/getmodules.routes.js";
 const port = process.env.PORT || 3000;
+import {getmRouterMovil} from "./routes/getmodules.routesmovil.js";
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cors());
 
 app.use(
@@ -49,11 +50,12 @@ app.get("/", (req, res) => {
 //swagger
 V1SwaggerDocs(app, port);
 
-app.use("/utnbackend/v2/mario", getmRouter);
+app.use("/utnbackend/v2/getModulesMovil", getmRouterMovil);
+app.use("/utnbackend/v2/getModules", getmRouter);
 app.use("/utnbackend/v2/login", router);
 app.use(
   "/utnbackend/v2/users",
- // authorize(["Administrador"], ["Usuarios"]),
+  // authorize(["Administrador"], ["Usuarios"]),
   usersRouter
 );
 app.use(

@@ -39,6 +39,15 @@ const Login = async (req, res) => {
                         message: "User email or password are incorrect!",
                         error: null,
                         user: null,
+                        token: null,
+                        auth: false
+                    });
+                } else if (!data.rows[0].user_state) {
+                    res.status(200).json({
+                        auth: false,
+                        error: null,
+                        user: null,
+                        message: "User inactive!",
                         token: null
                     });
                 }
@@ -66,10 +75,11 @@ const Login = async (req, res) => {
                                 user_phone_number: data.rows[0].user_phone_number,
                                 user_state: data.rows[0].user_state,
                                 user_date_register: data.rows[0].user_date_register
-                            }, 'secret');
+                            }, 'secretkey');
 
                             res.setHeader('Set-Cookie', token)
                             res.status(200).json({
+                                auth: true,
                                 error: null,
                                 user: data.rows[0],
                                 message: "Login successfully!",
@@ -78,6 +88,7 @@ const Login = async (req, res) => {
                         }
                         else {
                             res.status(200).json({
+                                auth: false,
                                 error: null,
                                 user: null,
                                 token: null,
@@ -89,6 +100,7 @@ const Login = async (req, res) => {
 
 
                         res.status(200).json({
+                            auth: false,
                             error: null,
                             user: null,
                             token: null,
@@ -101,7 +113,10 @@ const Login = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             error: error.message,
-            user: null
+            user: null,
+            auth: false,
+            token: null,
+            message: "Error!"
         })
     }
 }
