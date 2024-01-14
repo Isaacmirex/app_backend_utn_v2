@@ -53,7 +53,7 @@ passport.use(
       clientID: process.env.MICROSOFT_CLIENT_ID,
       clientSecret: process.env.MICROSOFT_CLIENT_SECRET,
       callbackURL:
-        "http://localhost:3000/auth/microsoft/callback",
+        "https://app-backend-utn-v2-2024.onrender.com/auth/microsoft/callback",
       scope: ["user.read", "calendars.read", "mail.read", "offline_access"],
       authorizationURL:
         "https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize",
