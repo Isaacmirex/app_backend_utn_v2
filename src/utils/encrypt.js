@@ -67,7 +67,38 @@ function getTableName (module_id) {
     }
 }
 
+function getComponentModuleName (module_name) {
+    if (module_name) {
+        const palabras = module_name.split(/\s+/);
+        const aux = palabras.filter(palabra => palabra.length > 3).join('');
+        const mn = "/" + aux.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        return mn;
+    }
+    return null
+}
+
+function getRoute (module_name) {
+    if (module_name) {
+        const palabras = module_name.split(/\s+/);
+        const aux = palabras.filter(palabra => palabra.length > 3).join('');
+        const mn = "/" + aux.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        return mn.toLowerCase();
+    }
+    return null
+}
+
+function ValidateModuleName (texto) {
+    const expresionRegular = /^[a-zA-Z]+$/;
+    return expresionRegular.test(texto);
+}
+
+
+const module_name = "Modulo de Usuarios";
+
+console.log(getComponentModuleName(module_name));
+console.log(getRoute(module_name));
+
 export {
     cipherPassword,
-    decryptPassword, ComparePasswords, getTableName
+    decryptPassword, ComparePasswords, getTableName, getComponentModuleName, getRoute
 }

@@ -7,8 +7,8 @@ const opcionesSwagger = {
         openapi: "3.0.0",
         info: {
             title: 'UTN Backend',
-            version: "2.0.0",
-            description: 'API para UTN Backend',
+            version: "3.0.0",
+            description: 'API UTN Backend',
         },
         components: {
             securitySchemes: {
