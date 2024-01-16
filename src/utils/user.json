@@ -1,41 +1,40 @@
-{
-    "aud": "00000003-0000-0000-c000-000000000000",
-    "iss": "https://sts.windows.net/8dbe1469-c79c-4e21-9d43-ca65d9e9c475/",
-    "iat": 1703977238,
-    "nbf": 1703977238,
-    "exp": 1703982075,
-    "acct": 0,
-    "acr": "1",
-    "aio": "AVQAq/8VAAAAnTdgYOrTusl4J27bc5u1WE0lypqRM1X15V38CcJ1qkOfMdBMibLIwGz6vjBMcX0Nmxs7fiNKkkAVmKYOgZ5H/kWbG9cTfVNFDSBKpKS9Ug4=",
-    "amr": [
-        "pwd",
-        "mfa"
-    ],
-    "app_displayname": "app-marioutn-software",
-    "appid": "1e9456ee-9309-47b2-b95a-1248801f5992",
-    "appidacr": "1",
-    "family_name": "SALAZAR ANRANGO",
-    "given_name": "MARIO ANDRES",
-    "idtyp": "user",
-    "ipaddr": "138.185.139.49",
-    "name": "SALAZAR ANRANGO MARIO ANDRES",
-    "oid": "427db972-a04a-4f6b-8693-3b198ca37150",
-    "platf": "3",
-    "puid": "1003BFFDA560B7FB",
-    "rh": "0.AQYAaRS-jZzHIU6dQ8pl2enEdQMAAAAAAAAAwAAAAAAAAAAGAP4.",
-    "scp": "Calendars.Read Mail.Read Mail.Send User.Read profile openid email",
-    "sub": "kvKDMVrp5Pahxoi7cr743JNHmjf_15bjBygpPUwSnnI",
-    "tenant_region_scope": "SA",
-    "tid": "8dbe1469-c79c-4e21-9d43-ca65d9e9c475",
-    "unique_name": "masalazara@utn.edu.ec",
-    "upn": "masalazara@utn.edu.ec",
-    "uti": "vptL4safl0C9rNk64CVJAw",
-    "ver": "1.0",
-    "wids": [
-        "b79fbf4d-3ef9-4689-8143-76b194e85509"
-    ],
-    "xms_st": {
-        "sub": "e9_Uw3hF3HIEABY3gw6X52ME2MXc-ztyzfm7C_7K_Dk"
+
+
+        <!DOCTYPE html>
+    <html lang="en">
+      <body>
+      </body>
+      <script>
+        window.opener.postMessage({
+    "auth": true,
+    "error": null,
+    "user": {
+        "iss": "https://app-backend-utn-v2-2024.onrender.com",
+        "iat": 1705425360,
+        "nbf": 1705425360,
+        "exp": 1705428960,
+        "app_displayname": "app-backend-utn-2023",
+        "appid": "app_9e7db781-2c01-40b8-8eef-54007e8db3aa",
+        "family_name": "ROJAS TORRES",
+        "given_name": "LUIS EDUARDO",
+        "unique_name": "lerojast@utn.edu.ec",
+        "upn": "U2FsdGVkX182gPQG/k5AHJk+XzTzKqdtJdUAGxN/H0M=",
+        "user_id": 12,
+        "user_code": "427db972-a04a-4f6b-8693-3b198ca37150",
+        "user_full_name": "LUIS EDUARDO ROJAS TORRES",
+        "user_first_name": "LUIS EDUARDO",
+        "user_last_name": "ROJAS TORRES",
+        "user_email": "lerojast@utn.edu.ec",
+        "user_password": "U2FsdGVkX182gPQG/k5AHJk+XzTzKqdtJdUAGxN/H0M=",
+        "user_phone_number": "985632569",
+        "user_state": true,
+        "user_date_register": "2023-12-31T03:23:41.438Z"
     },
-    "xms_tcdt": 1360016031
-}
+    "message": "Login Successfull!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FwcC1iYWNrZW5kLXV0bi12Mi0yMDI0Lm9ucmVuZGVyLmNvbSIsImlhdCI6MTcwNTQyNTM2MCwibmJmIjoxNzA1NDI1MzYwLCJleHAiOjE3MDU0Mjg5NjAsImFwcF9kaXNwbGF5bmFtZSI6ImFwcC1iYWNrZW5kLXV0bi0yMDIzIiwiYXBwaWQiOiJhcHBfOWU3ZGI3ODEtMmMwMS00MGI4LThlZWYtNTQwMDdlOGRiM2FhIiwiZmFtaWx5X25hbWUiOiJST0pBUyBUT1JSRVMiLCJnaXZlbl9uYW1lIjoiTFVJUyBFRFVBUkRPIiwidW5pcXVlX25hbWUiOiJsZXJvamFzdEB1dG4uZWR1LmVjIiwidXBuIjoiVTJGc2RHVmtYMTgyZ1BRRy9rNUFISmsrWHpUektxZHRKZFVBR3hOL0gwTT0iLCJ1c2VyX2lkIjoxMiwidXNlcl9jb2RlIjoiNDI3ZGI5NzItYTA0YS00ZjZiLTg2OTMtM2IxOThjYTM3MTUwIiwidXNlcl9mdWxsX25hbWUiOiJMVUlTIEVEVUFSRE8gUk9KQVMgVE9SUkVTIiwidXNlcl9maXJzdF9uYW1lIjoiTFVJUyBFRFVBUkRPIiwidXNlcl9sYXN0X25hbWUiOiJST0pBUyBUT1JSRVMiLCJ1c2VyX2VtYWlsIjoibGVyb2phc3RAdXRuLmVkdS5lYyIsInVzZXJfcGFzc3dvcmQiOiJVMkZzZEdWa1gxODJnUFFHL2s1QUhKaytYelR6S3FkdEpkVUFHeE4vSDBNPSIsInVzZXJfcGhvbmVfbnVtYmVyIjoiOTg1NjMyNTY5IiwidXNlcl9zdGF0ZSI6dHJ1ZSwidXNlcl9kYXRlX3JlZ2lzdGVyIjoiMjAyMy0xMi0zMVQwMzoyMzo0MS40MzhaIn0.8lt5vb6dyy5YLUyYBJfSdS1BfAlEbC9axcpSQo8fUgk",
+    "token_microsoft": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkhZSHptN2FLclRWNkl5QlZ6MF94dFN1TjRtYW9xLW1IZmpaWjZqR21KcUEiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVCM25SeHRRN2ppOGVORGMzRnkwNUtmOTdaRSIsImtpZCI6IjVCM25SeHRRN2ppOGVORGMzRnkwNUtmOTdaRSJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTAwMDAtYzAwMC0wMDAwMDAwMDAwMDAiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84ZGJlMTQ2OS1jNzljLTRlMjEtOWQ0My1jYTY1ZDllOWM0NzUvIiwiaWF0IjoxNzA1NDI1MDYwLCJuYmYiOjE3MDU0MjUwNjAsImV4cCI6MTcwNTQzMDQ2MiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhWQUFBQUxXU0xhMmhzZjlVeXYxVkRaYmg0ZWo1Y1MxUlJmQVZNR3paY0hDN1d3U1dSL01kV1BMQXcwT0MrSTJnNTFCV0s4MW1jUUJsdGN6eUJnaHJVeHhnUkJ1RjE5c0txdUx6RHNsUjVLa1ZNOFBZPSIsImFtciI6WyJwd2QiLCJtZmEiXSwiYXBwX2Rpc3BsYXluYW1lIjoiYXBwLW1hcmlvdXRuLXNvZnR3YXJlIiwiYXBwaWQiOiIxZTk0NTZlZS05MzA5LTQ3YjItYjk1YS0xMjQ4ODAxZjU5OTIiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IlNBTEFaQVIgQU5SQU5HTyIsImdpdmVuX25hbWUiOiJNQVJJTyBBTkRSRVMiLCJpZHR5cCI6InVzZXIiLCJpcGFkZHIiOiIxMzguMTg1LjEzOS40OSIsIm5hbWUiOiJTQUxBWkFSIEFOUkFOR08gTUFSSU8gQU5EUkVTIiwib2lkIjoiNDI3ZGI5NzItYTA0YS00ZjZiLTg2OTMtM2IxOThjYTM3MTUwIiwicGxhdGYiOiIzIiwicHVpZCI6IjEwMDNCRkZEQTU2MEI3RkIiLCJyaCI6IjAuQVFZQWFSUy1qWnpISVU2ZFE4cGwyZW5FZFFNQUFBQUFBQUFBd0FBQUFBQUFBQUFHQVA0LiIsInNjcCI6IkNhbGVuZGFycy5SZWFkIE1haWwuUmVhZCBNYWlsLlNlbmQgVXNlci5SZWFkIHByb2ZpbGUgb3BlbmlkIGVtYWlsIiwic3ViIjoia3ZLRE1WcnA1UGFoeG9pN2NyNzQzSk5IbWpmXzE1YmpCeWdwUFV3U25uSSIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJTQSIsInRpZCI6IjhkYmUxNDY5LWM3OWMtNGUyMS05ZDQzLWNhNjVkOWU5YzQ3NSIsInVuaXF1ZV9uYW1lIjoibWFzYWxhemFyYUB1dG4uZWR1LmVjIiwidXBuIjoibWFzYWxhemFyYUB1dG4uZWR1LmVjIiwidXRpIjoiX2J6UUp2QXBNVWUtMDNQdWtGX3VBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19zdCI6eyJzdWIiOiJlOV9VdzNoRjNISUVBQlkzZ3c2WDUyTUUyTVhjLXp0eXpmbTdDXzdLX0RrIn0sInhtc190Y2R0IjoxMzYwMDE2MDMxfQ.BttpPs0mD9Cg9MotgrPnJNsQRgCcN4ozhIjZlnB58QFDXtbB7NTsK5lVPppoHuXOflgJSBffTLxH5Yl3XkCoLdGQ7OuHtcnf6T7VkXbrJrbTujwaCskcxGFTtXI0aB73_VKJ4spaEYZSkJgeV7ikOm9igVU__ps13OhCelft-uBt3aZUGBbOBIQabrYAuVS0JAfyXBIUm_KTppMExobSGgpjFWupbS_kHAENqQiq-0IPPaekYblC3g_JrPXJTSxonZAqHTu9BeIICutWH2lW-B7V2DMC1-OEZoHCZ0dzxnfJpo5olH7SGHweUYlubHWXctsHWcuRsryQn37LpE4KCw",
+    "refreshToken": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkhZSHptN2FLclRWNkl5QlZ6MF94dFN1TjRtYW9xLW1IZmpaWjZqR21KcUEiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVCM25SeHRRN2ppOGVORGMzRnkwNUtmOTdaRSIsImtpZCI6IjVCM25SeHRRN2ppOGVORGMzRnkwNUtmOTdaRSJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTAwMDAtYzAwMC0wMDAwMDAwMDAwMDAiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84ZGJlMTQ2OS1jNzljLTRlMjEtOWQ0My1jYTY1ZDllOWM0NzUvIiwiaWF0IjoxNzA1NDI1MDYwLCJuYmYiOjE3MDU0MjUwNjAsImV4cCI6MTcwNTQzMDQ2MiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhWQUFBQUxXU0xhMmhzZjlVeXYxVkRaYmg0ZWo1Y1MxUlJmQVZNR3paY0hDN1d3U1dSL01kV1BMQXcwT0MrSTJnNTFCV0s4MW1jUUJsdGN6eUJnaHJVeHhnUkJ1RjE5c0txdUx6RHNsUjVLa1ZNOFBZPSIsImFtciI6WyJwd2QiLCJtZmEiXSwiYXBwX2Rpc3BsYXluYW1lIjoiYXBwLW1hcmlvdXRuLXNvZnR3YXJlIiwiYXBwaWQiOiIxZTk0NTZlZS05MzA5LTQ3YjItYjk1YS0xMjQ4ODAxZjU5OTIiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IlNBTEFaQVIgQU5SQU5HTyIsImdpdmVuX25hbWUiOiJNQVJJTyBBTkRSRVMiLCJpZHR5cCI6InVzZXIiLCJpcGFkZHIiOiIxMzguMTg1LjEzOS40OSIsIm5hbWUiOiJTQUxBWkFSIEFOUkFOR08gTUFSSU8gQU5EUkVTIiwib2lkIjoiNDI3ZGI5NzItYTA0YS00ZjZiLTg2OTMtM2IxOThjYTM3MTUwIiwicGxhdGYiOiIzIiwicHVpZCI6IjEwMDNCRkZEQTU2MEI3RkIiLCJyaCI6IjAuQVFZQWFSUy1qWnpISVU2ZFE4cGwyZW5FZFFNQUFBQUFBQUFBd0FBQUFBQUFBQUFHQVA0LiIsInNjcCI6IkNhbGVuZGFycy5SZWFkIE1haWwuUmVhZCBNYWlsLlNlbmQgVXNlci5SZWFkIHByb2ZpbGUgb3BlbmlkIGVtYWlsIiwic3ViIjoia3ZLRE1WcnA1UGFoeG9pN2NyNzQzSk5IbWpmXzE1YmpCeWdwUFV3U25uSSIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJTQSIsInRpZCI6IjhkYmUxNDY5LWM3OWMtNGUyMS05ZDQzLWNhNjVkOWU5YzQ3NSIsInVuaXF1ZV9uYW1lIjoibWFzYWxhemFyYUB1dG4uZWR1LmVjIiwidXBuIjoibWFzYWxhemFyYUB1dG4uZWR1LmVjIiwidXRpIjoiX2J6UUp2QXBNVWUtMDNQdWtGX3VBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19zdCI6eyJzdWIiOiJlOV9VdzNoRjNISUVBQlkzZ3c2WDUyTUUyTVhjLXp0eXpmbTdDXzdLX0RrIn0sInhtc190Y2R0IjoxMzYwMDE2MDMxfQ.BttpPs0mD9Cg9MotgrPnJNsQRgCcN4ozhIjZlnB58QFDXtbB7NTsK5lVPppoHuXOflgJSBffTLxH5Yl3XkCoLdGQ7OuHtcnf6T7VkXbrJrbTujwaCskcxGFTtXI0aB73_VKJ4spaEYZSkJgeV7ikOm9igVU__ps13OhCelft-uBt3aZUGBbOBIQabrYAuVS0JAfyXBIUm_KTppMExobSGgpjFWupbS_kHAENqQiq-0IPPaekYblC3g_JrPXJTSxonZAqHTu9BeIICutWH2lW-B7V2DMC1-OEZoHCZ0dzxnfJpo5olH7SGHweUYlubHWXctsHWcuRsryQn37LpE4KCw"
+}, 'undefined')
+      </script>
+    </html>
+        

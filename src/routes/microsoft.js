@@ -62,7 +62,7 @@ loginRouter.get(
         },
         "secretkey"
       );
-      const refreshToken = req.user.refreshToken.access_token;
+      const refreshToken = req.user.refreshToken;
       console.log(req.user)
       if (data.rows[0].user_state) {
         const user = jwt.verify(user_token, "secretkey");
