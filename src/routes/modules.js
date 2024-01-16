@@ -23,20 +23,17 @@ const upload = multer({storage: storage});
 
 
 const createModule = async (req, res) => {
-    const {module_name, module_icon_web, module_icon_movil} = req.body;
-    const module_icon_image = req.file.originalname;
-    const module_component = getComponentModuleName(module_name);
-    const module_route = getRoute(module_name)
+    const {module_name} = req.body;
+
     try {
         const module_state = true;
-        const imagenBuffer = "/src/images/" + module_icon_image;
-        console.log(imagenBuffer)
+
         const result = await client.query(
             `
-            INSERT INTO modules (module_name, module_state, module_icon_web, module_icon_movil, module_icon_imge, module_route, module_component) VALUES ($1, $2, $3, $4, $5, $6, $7)
-            RETURNING module_id,  module_name, module_state,  module_icon_web, module_icon_movil, module_icon_imge, module_route, module_component;
+            INSERT INTO modules (module_name, module_state) VALUES ($1, $2)
+            RETURNING module_name, module_state;
         `,
-            [module_name, module_state, module_icon_web, module_icon_movil, imagenBuffer, module_route, module_component]
+            [module_name, module_state]
         );
         var audit_operation = result.command;
         var audit_affected_table = "modules";
@@ -58,8 +55,8 @@ const createModule = async (req, res) => {
         console.error("Error al crear modulo", error);
         res.status(500).json({error: "Error creating a new module"});
     }
-
 };
+
 
 
 const modulesRouter = Router();
