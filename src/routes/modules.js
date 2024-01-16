@@ -21,7 +21,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage});
 
-
 const createModule = async (req, res) => {
     const {module_name} = req.body;
 
@@ -56,7 +55,6 @@ const createModule = async (req, res) => {
         res.status(500).json({error: "Error creating a new module"});
     }
 };
-
 
 
 const modulesRouter = Router();
@@ -172,7 +170,7 @@ modulesRouter.get('/:id', verifyToken, getModulesByID);
  *                  type: boolean
  *                  example: true  
  */
-modulesRouter.post('/', verifyToken, upload.single('module_icon_image'), createModule);
+modulesRouter.post('/', verifyToken, createModule);
 /**
  * @openapi
  * /utnbackend/v2/modules/{id}:
