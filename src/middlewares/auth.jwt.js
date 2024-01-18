@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
 import {client} from "../database/database.js";
+import {config} from 'dotenv';
+config()
 
 async function getUserById (id) {
   try {
@@ -20,7 +22,8 @@ const verifyToken = async (req, res, next) => {
     if (!token) {
       return res.status(403).json({message: "No token provided"});
     }
-    const decoded = jwt.verify(token, "secretkey");
+    const secretkey = process.env.SECRET_KEY
+    const decoded = jwt.verify(token, secretkey);
     const user = await getUserById(decoded.user_id);
     req.user = user;
     if (!user) {

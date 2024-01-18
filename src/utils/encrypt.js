@@ -1,6 +1,5 @@
 import CryptoJS from "crypto-js";
 import {config} from 'dotenv';
-import {client} from "../database/database.js";
 
 config()
 
@@ -26,7 +25,6 @@ function ComparePasswords (text, cipher) {
         return false
     }
 }
-console.log(cipherPassword("12345"))
 
 
 function getTableName (module_id) {
@@ -93,10 +91,6 @@ function ValidateModuleName (texto) {
 }
 
 
-const module_name = "Modulo de Usuarios";
-
-console.log(getComponentModuleName(module_name));
-console.log(getRoute(module_name));
 
 export {
     cipherPassword,

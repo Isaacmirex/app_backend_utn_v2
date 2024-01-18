@@ -3,6 +3,8 @@ import passport from "passport";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import {client} from "../database/database.js";
+import {config} from 'dotenv';
+config()
 
 const loginRouter = Router();
 
@@ -36,6 +38,7 @@ loginRouter.get(
       const data = await client.query(
         "SELECT * FROM users where user_code = '" + req.user.profile.id + "'"
       );
+      const secretkey = process.env.SECRET_KEY
       const user_token = jwt.sign(
         {
           iss: "https://app-backend-utn-v2-2024.onrender.com",
@@ -60,12 +63,11 @@ loginRouter.get(
           user_state: data.rows[0].user_state,
           user_date_register: data.rows[0].user_date_register,
         },
-        "secretkey"
+        secretkey
       );
       const refreshToken = req.user.refreshToken;
-      console.log(req.user)
       if (data.rows[0].user_state) {
-        const user = jwt.verify(user_token, "secretkey");
+        const user = jwt.verify(user_token, secretkey);
         const token = req.user.refreshToken.access_token;
         const userString = JSON.stringify({
           auth: data.rows[0].user_state,

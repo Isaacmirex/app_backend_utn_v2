@@ -42,11 +42,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/auth", loginRouter);
 
-//Hola mundo en el servidor de bienvenida
-app.get("/", (req, res) => {
-  res.send(`Hola mundo es una API de Login`);
-});
-
 //swagger
 V1SwaggerDocs(app, port);
 
@@ -116,6 +111,12 @@ app.use(
   auditingRouter
 );
 //app.use('/utnbackend/v1/assignments_modules', authorize(['Administrador'], ['Assignments_Modules']), assignments_modulesRouter);
+//Hola mundo en el servidor de bienvenida
+app.get("/", (req, res) => {
+  const dominio = req.get('host');
+  const enlace = `http://${dominio}/utnbackend/v2/docs`;
+  res.send(`Dominio: ${dominio}, Enlace: <a href="${enlace}">${enlace}</a>`);
+});
 
 app.listen(port, () => {
   console.log(`Escuchando en el puerto: http://localhost:${port}`);

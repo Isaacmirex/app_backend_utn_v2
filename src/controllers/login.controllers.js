@@ -2,6 +2,8 @@ import {client} from '../database/database.js';
 import {ComparePasswords} from '../utils/encrypt.js';
 import jwt from 'jsonwebtoken';
 import {cipherPassword} from '../utils/encrypt.js';
+import {config} from 'dotenv';
+config()
 
 const getUserById = async (user_id) => {
     try {
@@ -54,6 +56,7 @@ const Login = async (req, res) => {
                 else {
                     if (data.rows[0].user_password) {
                         if (ComparePasswords(password, data.rows[0].user_password)) {
+                            const secretkey = process.env.SECRET_KEY
                             const token = jwt.sign({
                                 iss: "https://app-backend-utn-2023.onrender.com",
                                 iat: Math.floor(Date.now() / 1000),
@@ -75,7 +78,7 @@ const Login = async (req, res) => {
                                 user_phone_number: data.rows[0].user_phone_number,
                                 user_state: data.rows[0].user_state,
                                 user_date_register: data.rows[0].user_date_register
-                            }, 'secretkey');
+                            }, secretkey);
 
                             res.setHeader('Set-Cookie', token)
                             res.status(200).json({
