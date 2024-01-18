@@ -115,7 +115,7 @@ app.use(
 app.get("/", (req, res) => {
   const dominio = req.get('host');
   const enlace = `http://${dominio}/utnbackend/v2/docs`;
-  res.send(`Dominio: ${dominio}, Enlace: <a href="${enlace}">${enlace}</a>`);
+  res.send(`Go to APIs at the following link: <a href="${enlace}">${enlace}</a>`);
 });
 
 app.listen(port, () => {
