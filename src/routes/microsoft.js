@@ -67,7 +67,15 @@ loginRouter.get(
       if (data.rows[0].user_state) {
         const user = jwt.verify(user_token, "secretkey");
         const token = req.user.refreshToken.access_token;
-        const userString = JSON.stringify(req.user);
+        const userString = JSON.stringify({
+          auth: data.rows[0].user_state,
+          error: null,
+          user: user,
+          message: "Login Successfull!",
+          token: user_token,
+          token_microsoft: token,
+          refreshToken: refreshToken
+        });
         res.status(200).send(`
         <!DOCTYPE html>
     <html lang="en">
