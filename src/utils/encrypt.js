@@ -69,7 +69,7 @@ function getComponentModuleName (module_name) {
     if (module_name) {
         const palabras = module_name.split(/\s+/);
         const aux = palabras.filter(palabra => palabra.length > 3).join('');
-        const mn = "/" + aux.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const mn = aux.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         return mn;
     }
     return null
@@ -79,7 +79,7 @@ function getRoute (module_name) {
     if (module_name) {
         const palabras = module_name.split(/\s+/);
         const aux = palabras.filter(palabra => palabra.length > 3).join('');
-        const mn = "/" + aux.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const mn = aux.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         return mn.toLowerCase();
     }
     return null

@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {getModules, getModulesByID, updateModule_Sate} from '../controllers/modulesController.js';
+import {getModules, getModulesByID, updateModule_Sate, createModuleWeb} from '../controllers/modulesController.js';
 import {verifyToken} from '../middlewares/auth.jwt.js';
 import {client} from "../database/database.js";
 import {getComponentModuleName, getRoute} from "../utils/encrypt.js";
@@ -20,6 +20,47 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({storage: storage});
+
+const createModule = async (req, res) => {
+    const {module_name} = req.body;
+    const module_icon_image = req.file.originalname;
+    const module_component = getComponentModuleName(module_name);
+    const module_route = getRoute(module_name)
+    try {
+        const module_state = true;
+        const imagenBuffer = "/src/images/" + module_icon_image;
+        console.log(imagenBuffer)
+        const result = await client.query(
+            `
+            INSERT INTO modules (module_name, module_state, module_icon_web, module_icon_movil, module_icon_image, module_route, module_component) VALUES ($1, $2, $3, $4, $5, $6, $7)
+            RETURNING module_id,  module_name, module_state,  module_icon_web, module_icon_movil, module_icon_image, module_route, module_component;
+        `,
+            [module_name, module_state, null, null, imagenBuffer, module_route, module_component]
+        );
+        var audit_operation = result.command;
+        var audit_affected_table = "modules";
+        var userid = req.user.user_id;
+        var audit_field_affect = req.body;
+        var changes = {
+            change_of: null,
+            change_to: result.rows[0],
+        };
+        await postAuditing(
+            audit_operation,
+            audit_affected_table,
+            userid,
+            audit_field_affect,
+            changes
+        );
+        res.status(201).json(result.rows[0]);
+    } catch (error) {
+        console.error("Error al crear modulo", error);
+        res.status(500).json({error: "Error creating a new module"});
+    }
+
+};
+
+/*
 
 const createModule = async (req, res) => {
     const {module_name} = req.body;
@@ -55,6 +96,7 @@ const createModule = async (req, res) => {
         res.status(500).json({error: "Error creating a new module"});
     }
 };
+*/
 
 
 const modulesRouter = Router();
@@ -134,15 +176,6 @@ modulesRouter.get('/:id', verifyToken, getModulesByID);
  *               module_name:
  *                 type: string
  *                 example: Auditoria
- *               module_state:
- *                  type: boolean
- *                  example: true  
- *               module_icon_web:
- *                 type: string
- *                 example: table
- *               module_icon_movil:
- *                 type: string
- *                 example: https//img./adqw.jpg
  *               module_icon_image:
  *                 type: bytea
  *                 example: Example
@@ -170,7 +203,9 @@ modulesRouter.get('/:id', verifyToken, getModulesByID);
  *                  type: boolean
  *                  example: true  
  */
-modulesRouter.post('/', verifyToken, createModule);
+modulesRouter.post('/', verifyToken, upload.single("module_icon_image"), createModule);
+
+
 /**
  * @openapi
  * /utnbackend/v2/modules/{id}:

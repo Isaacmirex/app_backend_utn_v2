@@ -25,7 +25,7 @@ const getAssignmentsModulesMovil = async (req, res) => {
         "  GROUP BY r.rol_id, r.rol_name, r.rol_state;"
       );
       const modules = await client.query(
-        "SELECT m.module_id, m.module_name, m.module_state, m.module_icon_web, m.module_icon_movil, m.module_icon_imge, m.module_route, m.module_component FROM roles as r, assignments_modules as a, users as u, modules as m WHERE a.user_id = u.user_id and a.module_id = m.module_id and m.module_id = a.module_id and u.user_id = " +
+        "SELECT m.module_id, m.module_name, m.module_state, m.module_icon_web, m.module_icon_movil, m.module_icon_image, m.module_route, m.module_component FROM roles as r, assignments_modules as a, users as u, modules as m WHERE a.user_id = u.user_id and a.module_id = m.module_id and m.module_id = a.module_id and u.user_id = " +
         user.rows[0].user_id +
         " GROUP BY m.module_id, m.module_name, m.module_state;"
       );
@@ -71,7 +71,7 @@ const getAssignmentsModules = async (req, res) => {
         "  GROUP BY r.rol_id, r.rol_name, r.rol_state;"
       );
       const modules = await client.query(
-        "SELECT m.module_id, m.module_name, m.module_state, m.module_icon_web, m.module_icon_movil, m.module_icon_imge, m.module_route, m.module_component FROM roles as r, assignments_modules as a, users as u, modules as m WHERE a.user_id = u.user_id and a.module_id = m.module_id and m.module_id = a.module_id and u.user_id = " +
+        "SELECT m.module_id, m.module_name, m.module_state, m.module_icon_web, m.module_icon_movil, m.module_icon_image, m.module_route, m.module_component FROM roles as r, assignments_modules as a, users as u, modules as m WHERE a.user_id = u.user_id and a.module_id = m.module_id and m.module_id = a.module_id and u.user_id = " +
         user.rows[0].user_id +
         " GROUP BY m.module_id, m.module_name, m.module_state;"
       );

@@ -20,6 +20,12 @@ import {router} from "./routes/login.routes.js";
 import {getmRouter} from "./routes/getmodules.routes.js";
 const port = process.env.PORT || 3000;
 import {getmRouterMovil} from "./routes/getmodules.routesmovil.js";
+import {setModuleRouter} from "./routes/setmodules.routes.js";
+import {setModuleRouterWeb} from "./routes/setmodulesweb.routes.js";
+import {config} from 'dotenv';
+config()
+
+const secretkey = process.env.SECRET_KEY
 
 const app = express();
 app.use(express.json());
@@ -28,16 +34,16 @@ app.use(cors());
 
 app.use(
   session({
-    secret: "$serverbackutn",
+    secret: secretkey,
     resave: true,
     saveUninitialized: true,
     cookie: {
-      secure: false, // Cambiar a true si estás usando HTTPS
+      secure: true, // Cambiar a true si estás usando HTTPS
       maxAge: 24 * 60 * 60 * 1000, // Tiempo de vida de la sesión en milisegundos
     },
   })
 );
-
+app.use('/src/images/', express.static('src/images'));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/auth", loginRouter);
@@ -45,6 +51,8 @@ app.use("/auth", loginRouter);
 //swagger
 V1SwaggerDocs(app, port);
 
+app.use("/utnbackend/v2/setIconWeb", setModuleRouterWeb);
+app.use("/utnbackend/v2/setIconMovil", setModuleRouter);
 app.use("/utnbackend/v2/getModulesMovil", getmRouterMovil);
 app.use("/utnbackend/v2/getModules", getmRouter);
 app.use("/utnbackend/v2/login", router);
@@ -113,6 +121,7 @@ app.use(
 //app.use('/utnbackend/v1/assignments_modules', authorize(['Administrador'], ['Assignments_Modules']), assignments_modulesRouter);
 //Hola mundo en el servidor de bienvenida
 app.get("/", (req, res) => {
+  console.log("Hola: ", req.user)
   const dominio = req.get('host');
   const enlace = `http://${dominio}/utnbackend/v2/docs`;
   res.send(`Go to APIs at the following link: <a href="${enlace}">${enlace}</a>`);
