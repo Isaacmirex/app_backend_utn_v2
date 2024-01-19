@@ -128,11 +128,7 @@ passport.use(
             }*/
 
         // Llamar a la función done para indicar que la autenticación fue exitosa
-        const state = generateUniqueState(); // Usar la función para obtener un estado único
-        const authorizationUrl = `https://login.microsoftonline.com/8dbe1469-c79c-4e21-9d43-ca65d9e9c475/oauth2/v2.0/authorize?client_id=${process.env.MICROSOFT_CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent("https://app-backend-utn-v2-2024.onrender.com/auth/microsoft/callback")}&state=${state}&scope=user.read calenders.read mail.read offline_access`;
 
-        // Redirigir al usuario a la URL de autorización
-        res.redirect(authorizationUrl);
         done(null, {profile, accessToken, refreshToken, userFromDB});
       } catch (error) {
         console.error("Error al autenticar al usuario", error);
