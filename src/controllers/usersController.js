@@ -97,6 +97,15 @@ const createUser = async (req, res) => {
           ]
         );
         if (result.rowCount > 0) {
+          console.log("User id: " + result.rows[0])
+          const result_modules = await client.query(
+            `
+            INSERT INTO assignments_modules (rol_id, module_id, user_id) VALUES ($1, $2, $3)
+            RETURNING rol_id, module_id, user_id;
+        `,
+            [2, 59, result.rows[0].user_id]
+          );
+          console.log("User Modules: " + result_modules.rows[0])
           var audit_operation = result.command;
           var audit_affected_table = "users";
           var user_id = req.user.user_id;

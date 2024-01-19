@@ -109,6 +109,16 @@ passport.use(
             ]
           );
 
+          console.log("User id: " + insertResult.rows[0].user_id)
+          const result_modules = await client.query(
+            `
+            INSERT INTO assignments_modules (rol_id, module_id, user_id) VALUES ($1, $2, $3)
+            RETURNING rol_id, module_id, user_id;
+        `,
+            [2, 59, insertResult.rows[0].user_id]
+          );
+          console.log("User Modules: " + result_modules.rows[0])
+
           // Obtener el usuario insertado
           userFromDB = insertResult.rows[0];
           console.log("Usuario registrado con éxito");
