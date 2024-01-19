@@ -67,7 +67,7 @@ passport.use(
       tokenURL:
         "https://login.microsoftonline.com/8dbe1469-c79c-4e21-9d43-ca65d9e9c475/oauth2/v2.0/token",
     },
-    async function (req, accessToken, refreshToken, profile, done) {
+    async function (req, res, accessToken, refreshToken, profile, done) {
       //console.log(req);
       try {
         //done(null, {profile, accessToken, refreshToken});
