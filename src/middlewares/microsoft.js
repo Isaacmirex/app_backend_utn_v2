@@ -46,13 +46,6 @@ passport.deserializeUser(async function (id, done) {
   }
 });
 
-function generateUniqueState () {
-  const timestamp = new Date().getTime();
-  const randomValue = Math.random().toString(36).substring(7);
-  return `${timestamp}-${randomValue}`;
-}
-
-
 passport.use(
   "auth-microsoft",
   new MicrosoftStrategy(
@@ -67,7 +60,7 @@ passport.use(
       tokenURL:
         "https://login.microsoftonline.com/8dbe1469-c79c-4e21-9d43-ca65d9e9c475/oauth2/v2.0/token",
     },
-    async function (req, res, accessToken, refreshToken, profile, done) {
+    async function (req, accessToken, refreshToken, profile, done) {
       //console.log(req);
       try {
         //done(null, {profile, accessToken, refreshToken});
@@ -128,7 +121,6 @@ passport.use(
             }*/
 
         // Llamar a la función done para indicar que la autenticación fue exitosa
-
         done(null, {profile, accessToken, refreshToken, userFromDB});
       } catch (error) {
         console.error("Error al autenticar al usuario", error);
