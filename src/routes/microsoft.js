@@ -14,6 +14,7 @@ loginRouter.use(passport.initialize());
 loginRouter.get("/microsoft", (req, res, next) => {
   const origin = req.get("Origin") || req.get("Referer");
   req.session.origin = origin;
+  console.log("Dominio de origen: " + origin)
   passport.authenticate(
     "auth-microsoft",
     {prompt: "select_account", session: false},
@@ -34,6 +35,7 @@ loginRouter.get(
   }),
   async (req, res) => {
     var origin_domain = req.session.origin;
+    console.log("Dominio de origen: " + origin)
     try {
       const data = await client.query(
         "SELECT * FROM users where user_email = '" + req.user.profile._json.mail + "'"
