@@ -121,7 +121,6 @@ app.use(
 //app.use('/utnbackend/v1/assignments_modules', authorize(['Administrador'], ['Assignments_Modules']), assignments_modulesRouter);
 //Hola mundo en el servidor de bienvenida
 app.get("/", (req, res) => {
-  console.log("Hola: ", req.user)
   const dominio = req.get('host');
   const enlace = `http://${dominio}/utnbackend/v2/docs`;
   res.send(`Go to APIs at the following link: <a href="${enlace}">${enlace}</a>`);

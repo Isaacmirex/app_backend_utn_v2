@@ -14,10 +14,6 @@ loginRouter.use(passport.initialize());
 loginRouter.get("/microsoft", (req, res, next) => {
   const origin = req.get("Origin") || req.get("Referer");
   req.session.origin = origin;
-
-  console.log("User Auth 1 --------------------------------------------------------------")
-  console.log(user)
-  console.log("User auth 1 End--------------------------------------------------------------")
   passport.authenticate(
     "auth-microsoft",
     {prompt: "select_account", session: false},
@@ -25,10 +21,6 @@ loginRouter.get("/microsoft", (req, res, next) => {
       if (err || !user.profile) {
         return res.status(401).json({message: "Authentication failed"});
       }
-      console.log("User Auth --------------------------------------------------------------")
-      console.log(user)
-      console.log("User auth End--------------------------------------------------------------")
-      req.user = user.profile
       res.json({token});
     }
   )(req, res, next);
@@ -44,7 +36,7 @@ loginRouter.get(
     var origin_domain = req.session.origin;
     try {
       const data = await client.query(
-        "SELECT * FROM users where user_code = '" + req.user.profile.id + "'"
+        "SELECT * FROM users where user_email = '" + req.user.profile._json.mail + "'"
       );
       const secretkey = process.env.SECRET_KEY
       const user_token = jwt.sign(
@@ -86,9 +78,6 @@ loginRouter.get(
           token_microsoft: token,
           refreshToken: refreshToken
         });
-        console.log("User --------------------------------------------------------------")
-        console.log(user)
-        console.log("user End--------------------------------------------------------------")
         res.status(200).send(`
         <!DOCTYPE html>
     <html lang="en">
