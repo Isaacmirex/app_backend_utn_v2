@@ -35,7 +35,6 @@ loginRouter.get(
   }),
   async (req, res) => {
     var origin_domain = req.session.origin;
-    console.log("Dominio de origen: " + origin)
     try {
       const data = await client.query(
         "SELECT * FROM users where user_email = '" + req.user.profile._json.mail + "'"
