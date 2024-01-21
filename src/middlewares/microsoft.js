@@ -129,7 +129,9 @@ passport.use(
               req.session.roles = assignmentsQueryResult.rows.map(row => row.rol_id);
               req.session.modules = assignmentsQueryResult.rows.map(row => row.module_id);
             }*/
-
+        console.log("Profile --------------------------------------------------------------")
+        console.log(profile)
+        console.log("Profile End--------------------------------------------------------------")
         // Llamar a la función done para indicar que la autenticación fue exitosa
         done(null, {profile, accessToken, refreshToken, userFromDB});
       } catch (error) {

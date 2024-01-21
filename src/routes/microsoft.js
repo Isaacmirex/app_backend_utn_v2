@@ -18,9 +18,12 @@ loginRouter.get("/microsoft", (req, res, next) => {
     "auth-microsoft",
     {prompt: "select_account", session: false},
     (err, user, info) => {
-      if (err || !user) {
+      if (err || !user.profile) {
         return res.status(401).json({message: "Authentication failed"});
       }
+      console.log("User Auth --------------------------------------------------------------")
+      console.log(user)
+      console.log("User auth End--------------------------------------------------------------")
       res.json({token});
     }
   )(req, res, next);
@@ -78,6 +81,9 @@ loginRouter.get(
           token_microsoft: token,
           refreshToken: refreshToken
         });
+        console.log("User --------------------------------------------------------------")
+        console.log(user)
+        console.log("user End--------------------------------------------------------------")
         res.status(200).send(`
         <!DOCTYPE html>
     <html lang="en">
