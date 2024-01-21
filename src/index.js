@@ -38,7 +38,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
     cookie: {
-      secure: true, // Cambiar a true si estás usando HTTPS
+      secure: false, // Cambiar a true si estás usando HTTPS
       maxAge: 24 * 60 * 60 * 1000, // Tiempo de vida de la sesión en milisegundos
     },
   })
