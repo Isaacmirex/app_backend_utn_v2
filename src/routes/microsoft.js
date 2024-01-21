@@ -14,6 +14,10 @@ loginRouter.use(passport.initialize());
 loginRouter.get("/microsoft", (req, res, next) => {
   const origin = req.get("Origin") || req.get("Referer");
   req.session.origin = origin;
+
+  console.log("User Auth 1 --------------------------------------------------------------")
+  console.log(user)
+  console.log("User auth 1 End--------------------------------------------------------------")
   passport.authenticate(
     "auth-microsoft",
     {prompt: "select_account", session: false},
@@ -24,6 +28,7 @@ loginRouter.get("/microsoft", (req, res, next) => {
       console.log("User Auth --------------------------------------------------------------")
       console.log(user)
       console.log("User auth End--------------------------------------------------------------")
+      req.user = user.profile
       res.json({token});
     }
   )(req, res, next);
