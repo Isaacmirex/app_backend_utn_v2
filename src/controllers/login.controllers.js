@@ -171,7 +171,7 @@ const setPassword = async (req, res) => {
 
 const logout = async (req, res) => {
     try {
-        req.session.destroy((err) => {
+        req.user.destroy((err) => {
             if (err) {
                 console.error(err);
             }
