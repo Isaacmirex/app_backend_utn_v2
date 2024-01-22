@@ -169,7 +169,22 @@ const setPassword = async (req, res) => {
     }
 }
 
+const logout = async (req, res) => {
+    try {
+        req.session.destroy((err) => {
+            if (err) {
+                console.error(err);
+            }
+            res.status(200).json({
+                message: "Logout successfully!"
+            }) // Redirigir a la página de inicio de sesión después de cerrar sesión
+        });
+    } catch (error) {
+
+    }
+}
+
 export {
     Login,
-    setPassword, getUserById
+    setPassword, getUserById, logout
 }

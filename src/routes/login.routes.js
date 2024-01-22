@@ -1,10 +1,33 @@
-import { Router } from "express";
-import { verifyToken } from "../middlewares/auth.jwt.js";
+import {Router} from "express";
+import {verifyToken} from "../middlewares/auth.jwt.js";
 const router = Router();
 
-import { Login, setPassword } from "../controllers/login.controllers.js";
+import {Login, setPassword, logout} from "../controllers/login.controllers.js";
 
-// Routes Login
+/**
+ * @openapi
+ * /utnbackend/v2/login:
+ *   get:
+ *     tags:
+ *       - Login
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array 
+ *                   items: 
+ *                     type: object
+ */
+router.get("/", logout);
+
 /**
  * @openapi
  * /utnbackend/v2/login:
@@ -118,4 +141,4 @@ router.post("/", Login);
  */
 router.put("/:user_id", setPassword);
 
-export { router };
+export {router};
