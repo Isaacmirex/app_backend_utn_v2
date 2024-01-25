@@ -79,7 +79,8 @@ const Login = async (req, res) => {
                                 user_state: data.rows[0].user_state,
                                 user_date_register: data.rows[0].user_date_register
                             }, secretkey);
-
+                            req.session.user = token
+                            console.log("Session User: ", req.session.user)
                             res.setHeader('Set-Cookie', token)
                             res.status(200).json({
                                 auth: true,
@@ -171,14 +172,22 @@ const setPassword = async (req, res) => {
 
 const logout = async (req, res) => {
     try {
-        req.user.destroy((err) => {
-            if (err) {
-                console.error(err);
-            }
+        console.log(req.session.user)
+        if (req.session) {
+            req.session.destroy((err) => {
+                if (err) {
+                    console.error(err);
+                }
+                res.status(200).json({
+                    message: "Logout successfully!"
+                }) // Redirigir a la página de inicio de sesión después de cerrar sesión
+            });
+        }
+        else {
             res.status(200).json({
-                message: "Logout successfully!"
-            }) // Redirigir a la página de inicio de sesión después de cerrar sesión
-        });
+                message: "No login!"
+            })
+        }
     } catch (error) {
 
     }

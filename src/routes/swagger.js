@@ -26,7 +26,7 @@ const opcionesSwagger = {
     // Lista de archivos que contienen las rutas de la API
     apis: ['src/routes/users.js', 'src/routes/modules.js', 'src/routes/roles.js', 'src/routes/assignments_modules.js',
         'src/routes/events.js', 'src/routes/assignments_events.js', 'src/routes/classroom.js',
-        'src/routes/assignments_class.js', 'src/routes/class_score.js', 'src/routes/auditing.js', 'src/routes/login.routes.js', 'src/routes/getmodules.routes.js', 'src/routes/getmodules.routesmovil.js', 'src/routes/setmodules.routes.js', 'src/routes/setmodulesweb.routes.js', 'database.js'],
+        'src/routes/assignments_class.js', 'src/routes/class_score.js', 'src/routes/auditing.js', 'src/routes/login.routes.js', 'src/routes/getmodules.routes.js', 'src/routes/getmodules.routesmovil.js', 'src/routes/setmodules.routes.js', 'src/routes/setmodulesweb.routes.js', 'src/routes/permissions_modules.routes.js', 'database.js'],
 };
 
 // Generar la especificación de Swagger

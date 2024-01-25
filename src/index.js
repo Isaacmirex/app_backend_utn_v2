@@ -23,6 +23,7 @@ import {getmRouterMovil} from "./routes/getmodules.routesmovil.js";
 import {setModuleRouter} from "./routes/setmodules.routes.js";
 import {setModuleRouterWeb} from "./routes/setmodulesweb.routes.js";
 import {config} from 'dotenv';
+import {permisions_modulesRouter} from "./routes/permissions_modules.routes.js";
 config()
 
 const secretkey = process.env.SECRET_KEY
@@ -56,6 +57,7 @@ app.use("/utnbackend/v2/setIconMovil", setModuleRouter);
 app.use("/utnbackend/v2/getModulesMovil", getmRouterMovil);
 app.use("/utnbackend/v2/getModules", getmRouter);
 app.use("/utnbackend/v2/login", router);
+app.use("/utnbackend/v2/permissions_modules", permisions_modulesRouter)
 app.use(
   "/utnbackend/v2/users",
   // authorize(["Administrador"], ["Usuarios"]),
