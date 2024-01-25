@@ -1,11 +1,11 @@
-import {getModulesByRolId} from "../controllers/permissions_modules.controller";
-import {verifyToken} from "../middlewares/auth.jwt";
+
+import {getModulesByRolId} from "../controllers/permissions_modules.controller.js";
+import {verifyToken} from "../middlewares/auth.jwt.js";
 import {Router} from "express";
 
 const getModulesRol_Router = Router();
 
 
-permisions_modulesRouter.get('/', verifyToken, getModulesByRolId);
 /**
  * @openapi
  * /utnbackend/v2/getModulesByRol/{id}:
@@ -16,7 +16,7 @@ permisions_modulesRouter.get('/', verifyToken, getModulesByRolId);
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the assignment module to search
+ *         description: ID of the permission module to search
  *         schema:
  *           type: integer
  *     responses:
