@@ -19,8 +19,23 @@ const getPermissionsModulesByID = async (req, res) => {
         const {id} = req.params;
         const result = await client.query(`
             select p.permissions_id, p.rol_id, p.module_id 
-from permissions_modules p inner join roles r on p.rol_id = r.rol_id 
-inner join modules m on m.module_id = p.module_id and p.permissions_id = '${id}'`);
+            from permissions_modules p inner join roles r on p.rol_id = r.rol_id 
+            inner join modules m on m.module_id = p.module_id and p.permissions_id = '${id}'`);
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error("Error al obtener una permiso de modulo", error);
+        res.status(400).json({error: "Error getting module permissions"});
+    }
+};
+
+const getModulesByRolId = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const result = await client.query(`
+            select m.module_id, m.module_name, m.module_state, m.module_icon_web, m.module_icon_movil, m.module_icon_image,
+            m.module_route, m.module_component
+            from modules m, roles r, permissions_modules p
+            where p.rol_id=r.rol_id and p.module_id=m.module_id and p.rol_id = '${id}'`);
         res.status(200).json(result.rows);
     } catch (error) {
         console.error("Error al obtener una permiso de modulo", error);
@@ -120,10 +135,10 @@ const deletePermissionsModulesByID = async (req, res) => {
     }
 };
 
-
 export {
     getPermissionsModules,
     getPermissionsModulesByID,
     createPermissionsModules,
-    deletePermissionsModulesByID
+    deletePermissionsModulesByID,
+    getModulesByRolId
 };

@@ -24,6 +24,7 @@ import {setModuleRouter} from "./routes/setmodules.routes.js";
 import {setModuleRouterWeb} from "./routes/setmodulesweb.routes.js";
 import {config} from 'dotenv';
 import {permisions_modulesRouter} from "./routes/permissions_modules.routes.js";
+import {getModulesRol_Router} from "./routes/getModulesByRol.routes.js";
 config()
 
 const secretkey = process.env.SECRET_KEY
@@ -52,6 +53,7 @@ app.use("/auth", loginRouter);
 //swagger
 V1SwaggerDocs(app, port);
 
+app.use("/utnbackend/v2/getModulesByRol", getModulesRol_Router);
 app.use("/utnbackend/v2/setIconWeb", setModuleRouterWeb);
 app.use("/utnbackend/v2/setIconMovil", setModuleRouter);
 app.use("/utnbackend/v2/getModulesMovil", getmRouterMovil);

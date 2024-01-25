@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {getPermissionsModules, getPermissionsModulesByID, createPermissionsModules, deletePermissionsModulesByID} from '../controllers/permissions_modules.controller.js';
+import {getPermissionsModules, getPermissionsModulesByID, createPermissionsModules, deletePermissionsModulesByID, getModulesByRolId} from '../controllers/permissions_modules.controller.js';
 import {verifyToken} from '../middlewares/auth.jwt.js';
 const permisions_modulesRouter = Router();
 
