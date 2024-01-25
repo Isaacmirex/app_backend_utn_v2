@@ -1,7 +1,6 @@
 import {Router} from 'express';
-import {getPermissionsModules, getPermissionsModulesByID, createPermissionsModules} from '../controllers/permissions_modules.controller.js';
+import {getPermissionsModules, getPermissionsModulesByID, createPermissionsModules, deletePermissionsModulesByID} from '../controllers/permissions_modules.controller.js';
 import {verifyToken} from '../middlewares/auth.jwt.js';
-import {deleteAssignmentsModulesByID} from '../controllers/assignments_modules.controller.js';
 const permisions_modulesRouter = Router();
 
 // Ruta protegida que requiere el rol "Usuarios"
@@ -151,6 +150,6 @@ permisions_modulesRouter.post('/', verifyToken, createPermissionsModules);
  *                   type: string
  *                   example: Permission module not found
  */
-permisions_modulesRouter.delete('/:id', verifyToken, deleteAssignmentsModulesByID);
+permisions_modulesRouter.delete('/:id', verifyToken, deletePermissionsModulesByID);
 
 export {permisions_modulesRouter};

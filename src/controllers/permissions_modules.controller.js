@@ -4,7 +4,7 @@ import {postAuditing} from "./auditing.controller.js";
 const getPermissionsModules = async (req, res) => {
     try {
         const result = await client.query(`
-            select p.permisions_id, p.rol_id, p.module_id 
+            select p.permissions_id, p.rol_id, p.module_id 
 from permissions_modules p inner join roles r on p.rol_id = r.rol_id 
 inner join modules m on m.module_id = p.module_id;`);
         res.status(200).json(result.rows);
@@ -18,9 +18,9 @@ const getPermissionsModulesByID = async (req, res) => {
     try {
         const {id} = req.params;
         const result = await client.query(`
-            select p.permisions_id, p.rol_id, p.module_id 
+            select p.permissions_id, p.rol_id, p.module_id 
 from permissions_modules p inner join roles r on p.rol_id = r.rol_id 
-inner join modules m on m.module_id = p.module_id and p.permisions_id = '${id}'`);
+inner join modules m on m.module_id = p.module_id and p.permissions_id = '${id}'`);
         res.status(200).json(result.rows);
     } catch (error) {
         console.error("Error al obtener una permiso de modulo", error);
@@ -124,5 +124,6 @@ const deletePermissionsModulesByID = async (req, res) => {
 export {
     getPermissionsModules,
     getPermissionsModulesByID,
-    createPermissionsModules
+    createPermissionsModules,
+    deletePermissionsModulesByID
 };
