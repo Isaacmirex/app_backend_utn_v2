@@ -103,6 +103,14 @@ function isBlacklisted (token) {
     return blacklistedTokens.includes(token);
 }
 
+function convertirStringAFecha (fechaString) {
+    const fecha = new Date(fechaString);
+    if (isNaN(fecha) || fecha.toString() === "Invalid Date") {
+        console.error("La cadena proporcionada no es una fecha válida.");
+        return null;
+    }
+    return fecha;
+}
 
 export {
     cipherPassword,

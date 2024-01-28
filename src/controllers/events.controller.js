@@ -1,18 +1,18 @@
-import { client } from "../database/database.js";
-import { postAuditing } from "./auditing.controller.js";
+import {client} from "../database/database.js";
+import {postAuditing} from "./auditing.controller.js";
 const getEvents = async (req, res) => {
   try {
     const response = await client.query("SELECT * FROM events ");
     res.json(response.rows);
   } catch (err) {
     console.error("Error getting classrooms", err);
-    res.status(500).json({ error: "An error occurred while getting events" });
+    res.status(500).json({error: "An error occurred while getting events"});
   }
 };
 
 const getEventsById = async (req, res) => {
   try {
-    const { id } = req.params;
+    const {id} = req.params;
     const response = await client.query(
       "SELECT * FROM events WHERE event_id = $1",
       [id]
@@ -22,7 +22,7 @@ const getEventsById = async (req, res) => {
     console.error("Error getting class_score by id", err);
     res
       .status(500)
-      .json({ error: "An error occurred while getting class_score by id" });
+      .json({error: "An error occurred while getting class_score by id"});
   }
 };
 
@@ -74,7 +74,7 @@ const createEvent = async (req, res) => {
     console.error("Error creating event", err);
     res
       .status(500)
-      .json({ error: "An error occurred while creating the event" });
+      .json({error: "An error occurred while creating the event"});
   }
 };
 
@@ -88,6 +88,7 @@ const updateEvent = async (req, res) => {
       event_description,
       event_state,
     } = req.body;
+    const fecha = convertirStringAFecha(event_date)
     const ac_preview = await client.query(
       "select*from events where event_id = $1",
       [event_id]
@@ -96,7 +97,7 @@ const updateEvent = async (req, res) => {
       "UPDATE public.events SET event_name = $1, event_date = $2, event_place = $3, event_description = $4, event_state = $5 WHERE event_id = $6 RETURNING *",
       [
         event_name,
-        event_date,
+        fecha,
         event_place,
         event_description,
         event_state,
@@ -105,7 +106,7 @@ const updateEvent = async (req, res) => {
     );
 
     if (result.rows.length === 0) {
-      return res.status(404).json({ error: "Event not found" });
+      return res.status(404).json({error: "Event not found"});
     }
 
     const updatedEvent = result.rows[0];
@@ -134,8 +135,8 @@ const updateEvent = async (req, res) => {
     console.error("Error updating event", err);
     res
       .status(500)
-      .json({ error: "An error occurred while updating the event" });
+      .json({error: "An error occurred while updating the event"});
   }
 };
 
-export { getEvents, getEventsById, createEvent, updateEvent };
+export {getEvents, getEventsById, createEvent, updateEvent};
