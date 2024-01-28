@@ -4,9 +4,10 @@ import {postAuditing} from "./auditing.controller.js";
 const getPermissionsModules = async (req, res) => {
     try {
         const result = await client.query(`
-            select p.permissions_id, p.rol_id, p.module_id 
+        select p.permissions_id, p.rol_id, r.rol_name, p.module_id, m.module_name 
 from permissions_modules p inner join roles r on p.rol_id = r.rol_id 
-inner join modules m on m.module_id = p.module_id;`);
+inner join modules m on m.module_id = p.module_id;    
+        `);
         res.status(200).json(result.rows);
     } catch (error) {
         console.error("Error al obtener permisos de modulos", error);

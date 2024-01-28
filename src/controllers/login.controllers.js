@@ -80,8 +80,15 @@ const Login = async (req, res) => {
                                 user_date_register: data.rows[0].user_date_register
                             }, secretkey);
                             req.session.user = token
+                            let options = {
+                                maxAge: 20 * 60 * 1000, // would expire in 20minutes
+                                httpOnly: true, // The cookie is only accessible by the web server
+                                secure: true,
+                                sameSite: "None",
+                            };
                             console.log("Session User: ", req.session.user)
                             res.setHeader('Set-Cookie', token)
+                            res.cookie("SessionID", token, options);
                             res.status(200).json({
                                 auth: true,
                                 error: null,
