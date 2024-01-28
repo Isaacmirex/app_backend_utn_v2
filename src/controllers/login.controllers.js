@@ -179,29 +179,25 @@ const setPassword = async (req, res) => {
 
 const logout = async (req, res) => {
     try {
-        console.log("Session user: " + req.user)
-        const sessionID = req.cookies['SessionID'];
-        const token = req.cookies['token'];
-        console.log("SessionID")
-        console.log(sessionID)
-        console.log('Token: ', token)
-        if (req.session) {
-            req.session.destroy((err) => {
-                if (err) {
-                    console.error(err);
-                }
-                res.status(200).json({
-                    message: "Logout successfully!"
-                }) // Redirigir a la página de inicio de sesión después de cerrar sesión
-            });
+        const authorizationHeader = req.headers["authorization"];
+        const token = authorizationHeader && authorizationHeader.split(" ")[1] || req.headers["token"];
+        console.log(token)
+        if (!token) {
+            return res.status(403).json({message: "You are not logged in!"});
         }
-        else {
-            res.status(200).json({
-                message: "No login!"
-            })
-        }
+        console.log("0");
+        const secretkey = process.env.SECRET_KEY
+        console.log("1", secretkey);
+        const decoded = jwt.verify(token, secretkey);
+        console.log("2");
+        /*const user = await getUserById(decoded.user_id);
+        req.user = user;
+        if (!user) {
+            return res.status(500).json({message: "Unauthorized, User not foud!"});
+        }*/
+        res.status(200).json({message: "Error"})
     } catch (error) {
-
+        res.status(200).json({message: "Error: " + error.message});
     }
 }
 
