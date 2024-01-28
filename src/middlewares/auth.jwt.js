@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import {client} from "../database/database.js";
 import {config} from 'dotenv';
+import {isBlacklisted} from "../utils/encrypt.js";
+
 config()
 
 async function getUserById (id) {
@@ -21,6 +23,9 @@ const verifyToken = async (req, res, next) => {
     const token = authorizationHeader && authorizationHeader.split(" ")[1] || req.headers["token"];
     if (!token) {
       return res.status(403).json({message: "No token provided"});
+    }
+    if (isBlacklisted(token)) {
+      return res.status(500).json({message: "Unauthorized, Token is not valid!!"});
     }
     const secretkey = process.env.SECRET_KEY
     const decoded = jwt.verify(token, secretkey);

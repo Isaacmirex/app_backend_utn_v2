@@ -1,5 +1,5 @@
 import {client} from '../database/database.js';
-import {ComparePasswords} from '../utils/encrypt.js';
+import {ComparePasswords, addToBlacklist} from '../utils/encrypt.js';
 import jwt from 'jsonwebtoken';
 import {cipherPassword} from '../utils/encrypt.js';
 import {config} from 'dotenv';
@@ -187,17 +187,16 @@ const logout = async (req, res) => {
         }
         console.log("0");
         const secretkey = process.env.SECRET_KEY
-        console.log("1", secretkey);
         const decoded = jwt.verify(token, secretkey);
-        console.log("2");
-        /*const user = await getUserById(decoded.user_id);
+        const user = await getUserById(decoded.user_id);
         req.user = user;
         if (!user) {
             return res.status(500).json({message: "Unauthorized, User not foud!"});
-        }*/
-        res.status(200).json({message: "Error"})
+        }
+        addToBlacklist(token)
+        res.status(200).json({message: "Logout successfully!"})
     } catch (error) {
-        res.status(200).json({message: "Error: " + error.message});
+        res.status(200).json({message: "Error token: " + error.message});
     }
 }
 

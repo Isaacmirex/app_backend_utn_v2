@@ -90,9 +90,21 @@ function ValidateModuleName (texto) {
     return expresionRegular.test(texto);
 }
 
+// Lista negra de tokens inválidos
+let blacklistedTokens = [];
+
+// Función para agregar un token a la lista negra
+function addToBlacklist (token) {
+    blacklistedTokens.push(token);
+}
+
+// Función para verificar si un token está en la lista negra
+function isBlacklisted (token) {
+    return blacklistedTokens.includes(token);
+}
 
 
 export {
     cipherPassword,
-    decryptPassword, ComparePasswords, getTableName, getComponentModuleName, getRoute
+    decryptPassword, ComparePasswords, getTableName, getComponentModuleName, getRoute, addToBlacklist, isBlacklisted
 }
