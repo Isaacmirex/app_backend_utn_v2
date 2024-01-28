@@ -180,8 +180,11 @@ const setPassword = async (req, res) => {
 const logout = async (req, res) => {
     try {
         console.log("Session user: " + req.user)
-        console.log(req.user)
-        console.log(req.session)
+        const sessionID = req.cookies['SessionID'];
+        const token = req.cookies['token'];
+        console.log("SessionID")
+        console.log(sessionID)
+        console.log('Token: ', token)
         if (req.session) {
             req.session.destroy((err) => {
                 if (err) {
