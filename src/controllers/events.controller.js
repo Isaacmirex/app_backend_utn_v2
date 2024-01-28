@@ -88,7 +88,7 @@ const updateEvent = async (req, res) => {
       event_description,
       event_state,
     } = req.body;
-    const fecha = convertirStringAFecha(event_date)
+    const fecha = convertirStringAFecha(event_date);
     const ac_preview = await client.query(
       "select*from events where event_id = $1",
       [event_id]
@@ -135,7 +135,7 @@ const updateEvent = async (req, res) => {
     console.error("Error updating event", err);
     res
       .status(500)
-      .json({error: "An error occurred while updating the event"});
+      .json({error: "An error occurred while updating the event " + fecha});
   }
 };
 
