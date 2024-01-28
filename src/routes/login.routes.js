@@ -4,29 +4,6 @@ const router = Router();
 
 import {Login, setPassword, logout} from "../controllers/login.controllers.js";
 
-/**
- * @openapi
- * /utnbackend/v2/login:
- *   get:
- *     tags:
- *       - Login
- *     responses:
- *       200:
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array 
- *                   items: 
- *                     type: object
- */
-router.get("/", logout);
 
 /**
  * @openapi

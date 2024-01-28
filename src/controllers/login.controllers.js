@@ -179,7 +179,7 @@ const setPassword = async (req, res) => {
 
 const logout = async (req, res) => {
     try {
-        console.log(req.session.user)
+        console.log("Session user: " + req.session.user)
         if (req.session) {
             req.session.destroy((err) => {
                 if (err) {

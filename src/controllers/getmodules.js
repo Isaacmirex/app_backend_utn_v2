@@ -58,7 +58,7 @@ const getAssignmentsModulesMovil = async (req, res) => {
 };
 
 const getAssignmentsModules = async (req, res) => {
-
+  console.log("Usuario: ", req.user)
   const {id} = req.params;
   try {
     const user = await client.query(

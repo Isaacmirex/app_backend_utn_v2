@@ -25,7 +25,11 @@ import {setModuleRouterWeb} from "./routes/setmodulesweb.routes.js";
 import {config} from 'dotenv';
 import {permisions_modulesRouter} from "./routes/permissions_modules.routes.js";
 import {getModulesRol_Router} from "./routes/getModulesByRol.routes.js";
-import {get_assignments_classRouter} from "./routes/classroombyuser.controllers.js";
+import {get_assignments_classRouter} from "./routes/classroombyuser.routes.js";
+import {router_logout} from "./routes/logout.routes.js";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+
 config()
 
 const secretkey = process.env.SECRET_KEY
@@ -46,6 +50,14 @@ app.use(
     },
   })
 );
+
+// create application/json parser
+var jsonParser = bodyParser.json()
+
+// create application/x-www-form-urlencoded parser
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(cookieParser())
+
 app.use('/src/images/', express.static('src/images'));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -54,6 +66,7 @@ app.use("/auth", loginRouter);
 //swagger
 V1SwaggerDocs(app, port);
 
+app.use("/utnbackend/v2/logout", router_logout);
 app.use("/utnbackend/v2/getClassRoomByUser", get_assignments_classRouter);
 app.use("/utnbackend/v2/getModulesByRol", getModulesRol_Router);
 app.use("/utnbackend/v2/setIconWeb", setModuleRouterWeb);
