@@ -114,5 +114,5 @@ function convertirStringAFecha (fechaString) {
 
 export {
     cipherPassword,
-    decryptPassword, ComparePasswords, getTableName, getComponentModuleName, getRoute, addToBlacklist, isBlacklisted
+    decryptPassword, ComparePasswords, getTableName, getComponentModuleName, getRoute, addToBlacklist, isBlacklisted, convertirStringAFecha
 }

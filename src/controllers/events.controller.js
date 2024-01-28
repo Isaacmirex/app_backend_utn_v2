@@ -1,5 +1,7 @@
 import {client} from "../database/database.js";
 import {postAuditing} from "./auditing.controller.js";
+import {convertirStringAFecha} from "../utils/encrypt.js";
+
 const getEvents = async (req, res) => {
   try {
     const response = await client.query("SELECT * FROM events ");
