@@ -177,6 +177,51 @@ const setPassword = async (req, res) => {
     }
 }
 
+const setPasswordByEmail = async (req, res) => {
+    try {
+        const {user_id} = req.params
+        const {password, repeat_password} = req.body
+        getUserById(user_id)
+            .then(user => {
+                if (user) {
+                    if (password === repeat_password) {
+                        client.query("update users set user_password = $1 where user_email = $2;", [cipherPassword(password), user_id], (error, data) => {
+                            if (error) {
+                                res.status(404).json({
+                                    message: "Error on set password!",
+                                    error: error.message,
+                                })
+                            }
+                            else {
+                                res.status(200).json({
+                                    message: "Set password successfully!",
+                                    error: null
+                                })
+                            }
+                        })
+                    }
+                    else {
+                        res.status(200).json({
+                            message: "Error to set password, the passwords are diferents!",
+                            error: null
+                        })
+                    }
+                } else {
+                    res.status(500).json({
+                        message: "User not found!",
+                        error: null
+                    })
+                }
+            })
+
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed",
+            error: error.message
+        })
+    }
+}
+
 const logout = async (req, res) => {
     try {
         const authorizationHeader = req.headers["authorization"];
@@ -202,5 +247,5 @@ const logout = async (req, res) => {
 
 export {
     Login,
-    setPassword, getUserById, logout
+    setPassword, getUserById, logout, setPasswordByEmail
 }
