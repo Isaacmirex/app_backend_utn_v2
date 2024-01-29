@@ -28,6 +28,29 @@ const getUserById = async (user_id) => {
     }
 };
 
+const getUserByEmail = async (user_id) => {
+    try {
+        if (!user_id) {
+            return "Please, enter the username or email address!";
+        }
+        return new Promise((resolve, reject) => {
+            client.query("SELECT * FROM users WHERE user_email = $1;", [user_id], (error, data) => {
+                if (error) {
+                    reject(null);
+                } else {
+                    if (data.rows[0]) {
+                        resolve(data.rows[0]);
+                    } else {
+                        resolve(null);
+                    }
+                }
+            });
+        });
+    } catch (error) {
+        return null;
+    }
+};
+
 const Login = async (req, res) => {
     try {
         const {user_email, password} = req.body
@@ -181,7 +204,7 @@ const setPasswordByEmail = async (req, res) => {
     try {
         const {user_id} = req.params
         const {password, repeat_password} = req.body
-        getUserById(user_id)
+        getUserByEmail(user_id)
             .then(user => {
                 if (user) {
                     if (password === repeat_password) {
